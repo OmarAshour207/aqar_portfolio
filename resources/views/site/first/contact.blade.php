@@ -69,7 +69,7 @@
     <section class="p-0 plant-img">
         <div class="container">
             <div class="plant-img_2">
-                <img src="{{ asset('site/images/contact_us_plant.png') }}" class="img-fluid float-right plant" alt="Plant">
+                <img src="{{ asset('site/images/contact_us_plant.png') }}" class="img-fluid float-right plant" alt="{{ setting('contact_us') }}">
             </div>
         </div>
     </section>
@@ -82,7 +82,7 @@
                     <h2 class="text-white mb-0">{{ __('home.like_what_see') }}</h2>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <a href="{{ url('contact-us') }}" class="btn text-white bottom-link mb-0">{{ __('home.hire_us') }}</a>
+                    <a href="{{ url('contact-us') }}" title="{{ setting('contact_us') }}" class="btn text-white bottom-link mb-0">{{ __('home.hire_us') }}</a>
                 </div>
             </div>
         </div>

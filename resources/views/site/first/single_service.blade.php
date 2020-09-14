@@ -13,35 +13,13 @@
 
                         <div class="main-banner">
                             <div class="slideshow-container">
-
+                                @php
+                                    $meta_tag = session('lang') . '_meta_tag';
+                                @endphp
                                 <div class="mySlides fade">
-                                    <a href=""><img src="{{ $service->service_image }}" style="height: 500px"></a>
+                                    <a href=""><img src="{{ $service->service_image }}"  alt="{{ $service->$meta_tag }}" style="height: 500px"></a>
                                     <!--        <div class="text">Caption Text</div>-->
                                 </div>
-
-                                <div class="mySlides fade">
-                                    <a href=""><img src="https://i.resimyukle.xyz/7fN7cM.jpg"></a>
-
-                                </div>
-
-                                <div class="mySlides fade">
-                                    <a href=""><img src="https://i.resimyukle.xyz/x2QJQK.jpg"></a>
-
-                                </div>
-
-                                <div class="mySlides fade">
-                                    <a href=""><img src="https://i.resimyukle.xyz/VQH4yf.jpg"></a>
-
-                                </div>
-
-                                <div class="mySlides fade">
-                                    <a href=""><img src="https://i.resimyukle.xyz/AWHL3H.jpg"></a>
-
-                                </div>
-
-                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
 
                             </div>
                             <style>

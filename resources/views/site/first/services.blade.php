@@ -25,14 +25,15 @@
                     @php
                         $title = session('lang') . '_title';
                         $desc = session('lang') . '_description';
+                        $meta_tag = session('lang') . '_meta_tag';
                     @endphp
                     @foreach($services as $service)
                         <div class="col-md-4 col-12 masonry__item" style="position: absolute; left: 0px; top: 0px;">
                             <div class="project-thumb hover-element height-40">
-                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
+                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}">
                                     <div class="hover-element__initial">
                                         <div class="background-image-holder" style="background: url(&quot;{{ $service->service_image }}&quot;); opacity: 1;">
-                                            <img alt="background" src="{{ $service->service_image }}">
+                                            <img alt="{{ $service->$meta_tag }}" src="{{ $service->service_image }}">
                                         </div>
                                     </div>
                                     <div class="hover-element__reveal" data-overlay="9">
@@ -59,10 +60,10 @@
         <div class="container">
             <div class="row counter-bg bottom-content">
                 <div class="col-lg-8 col-md-12">
-                    <h2 class="text-white mb-0">Like what you see? Let’s Connect</h2>
+                    <h2 class="text-white mb-0">{{ __('home.like_what_see') }}</h2>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <a href="contact.html" class="btn text-white bottom-link mb-0">Hire Us</a>
+                    <a href="{{ url(setting('contact_us')) }}" title="{{ setting('contact_us') }}" class="btn text-white bottom-link mb-0">{{ __('home.hire_us') }}</a>
                 </div>
             </div>
         </div>

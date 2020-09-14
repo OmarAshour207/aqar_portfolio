@@ -16,7 +16,7 @@
 
                             <div class="mySlides fade">
                                 <a href="">
-                                    <img src="{{ $data->data_image ?? '' }}" style="width: 635px;height: 357px;"></a>
+                                    <img src="{{ $data->data_image ?? '' }}" alt="{{ $data->data_image ?? '' }}" style="width: 635px;height: 357px;"></a>
                                 <!--        <div class="text">Caption Text</div>-->
                             </div>
 

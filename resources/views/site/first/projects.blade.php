@@ -15,16 +15,17 @@
                 @php
                     $title = session('lang') . '_title';
                     $desc = session('lang') . '_description';
+                    $meta_tag = session('lang') . '_meta_tag';
                 @endphp
                 @foreach($projects as $project)
                     <div class="col-lg-4 col-md-6">
                         <div class="blog-block flex-column">
                             <div class="blog-img w-100">
-                                <img src="{{ $project->project_image }}" class="img-fluid" alt="blog-img">
+                                <img src="{{ $project->project_image }}" class="img-fluid" alt="{{ $project->$meta_tag }}">
                             </div>
                             <div class="blog-content">
                                 <h4>
-                                    <a href="#">
+                                    <a href="#" title="{{ $project->$meta_tag }}">
                                         {{ $project->$title }}
                                     </a>
                                 </h4>

@@ -4,10 +4,13 @@
     @if(Request::segment(1) == '')
         <div class="main-banner mb-2">
             <div class="slideshow-container">
+                @php
+                    $meta_tag = session('lang') . '_meta_tag';
+                @endphp
                 @foreach($sliders as $index => $slider)
                     <div class="mySlides fade">
                         <a href="">
-                            <img src="{{ $slider->slider_image }}">
+                            <img src="{{ $slider->slider_image }}" alt="{{ $slider->$meta_tag }}">
                         </a>
                         <!--        <div class="text">Caption Text</div>-->
                     </div>
@@ -136,18 +139,18 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-8">
                         <div class="">
-                            <a href="{{ url('/') }}">
-                                <img class="img-fluid logo" alt="Elements" src="{{ getLogo() }}" style="max-width: 97px;"/>
+                            <a href="{{ url('/') }}" title="{{ __('home.home') }}">
+                                <img class="img-fluid logo" alt="{{ setting('website_title') }}" src="{{ getLogo() }}" style="max-width: 97px;"/>
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-12 text-right hidden-md hidden-sm hidden-xs d-flex justify-content-end align-items-center">
                         <div class="bar__module">
                             <ul class="menu-horizontal text-left">
-                                <li><a href="{{ url('/') }}">{{ __('home.home') }}</a></li>
+                                <li><a href="{{ url('/') }}" title="{{ __('home.home') }}">{{ __('home.home') }}</a></li>
                                 <li>
                                     <div class="dropdown">
-                                        <a class="dropbtn" href="#">
+                                        <a class="dropbtn" href="#" title="{{ setting('about_us') }}">
                                             {{ __('home.about_us') }}
                                         </a>
                                         <div class="dropdown-content">
@@ -155,7 +158,7 @@
                                                 $title = session('lang') . '_title';
                                             @endphp
                                             @foreach($abouts as $about)
-                                                <a href="{{ url(setting('about_us') . '?tab=' . $about->$title) }}">{{ $about->$title }}</a>
+                                                <a href="{{ url(setting('about_us') . '?tab=' . $about->$title) }}" title="{{ setting('about_us') }}">{{ $about->$title }}</a>
                                             @endforeach
                                         </div>
                                     </div>
@@ -163,16 +166,17 @@
 
                                 <li>
                                     <div class="dropdown">
-                                        <a class="dropbtn" href="{{ url(setting('our_services')) }}">
+                                        <a class="dropbtn" href="{{ url(setting('our_services')) }}" title="{{ __('admin.services') }}">
                                             {{ __('home.our_services') }}
                                         </a>
                                         <div class="dropdown-content">
                                             @php
                                                 $title = session('lang') . '_title';
+                                                $meta_tag = session('lang') . '_meta_tag';
                                             @endphp
                                             @foreach($services as $index => $service)
 
-                                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
+                                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}">
                                                     {{ $service->$title }} <i class="fa fa-chevron-circle-right"></i>
                                                 </a>
                                                 @for($i = 0;$i < count($subCategory); $i++)
@@ -183,7 +187,7 @@
                                                                 $id = $allValue[1];
                                                                 $name = $allValue[0];
                                                             @endphp
-                                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" class="ml-4">
+                                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" title="{{ $name }}" class="ml-4">
                                                                 {{ $name }}
                                                             </a>
                                                         @endif
@@ -194,14 +198,34 @@
                                     </div>
                                 </li>
 
-                                <li><a href="{{ url(setting('our_projects')) }}">{{ __('home.our_projects') }}</a></li>
+                                <li>
+                                    <a href="{{ url(setting('our_projects')) }}" title="{{ setting('our_projects') }}">
+                                        {{ __('home.our_projects') }}
+                                    </a>
+                                </li>
 
-                                <li><a href="{{ url(setting('blogs')) }}">{{ __('home.blogs') }}</a></li>
-                                <li><a href="{{ url(setting('contact_us')) }}">{{ __('admin.contact_us') }}</a></li>
+                                <li>
+                                    <a href="{{ url(setting('blogs')) }}" title="{{ setting('blogs') }}">
+                                        {{ __('home.blogs') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url(setting('contact_us')) }}" title="{{ setting('contact_us') }}">
+                                        {{ __('admin.contact_us') }}
+                                    </a>
+                                </li>
                                 @if(Auth::check())
-                                    <li><a href="{{ url(setting('profile')) }}">{{ __('admin.profile') }}</a></li>
+                                    <li>
+                                        <a href="{{ url('profile') }}" title="{{ url('profile') }}">
+                                            {{ __('admin.profile') }}
+                                        </a>
+                                    </li>
                                 @else
-                                    <li><a href="{{ url('/login') }}">{{ __('home.login') }}</a></li>
+                                    <li>
+                                        <a href="{{ url('/login') }}" title="{{ url('login') }}">
+                                            {{ __('home.login') }}
+                                        </a>
+                                    </li>
                                 @endif
                                 <li>
                                     <div class="dropdown">
@@ -209,8 +233,12 @@
                                             {{ __('admin.languages') }}
                                         </a>
                                         <div class="dropdown-content">
-                                            <a href="{{ url('lang/ar') }}">{{ __('home.arabic') }}</a>
-                                            <a href="{{ url('lang/en') }}">{{ __('home.english') }}</a>
+                                            <a href="{{ url('lang/ar') }}" title="{{ url('lang/ar') }}">
+                                                {{ __('home.arabic') }}
+                                            </a>
+                                            <a href="{{ url('lang/en') }}" title="{{ url('lang/en') }}">
+                                                {{ __('home.english') }}
+                                            </a>
                                         </div>
                                     </div>
                                 </li>
@@ -234,8 +262,8 @@
             <div class="row bar bar--sm bar-1">
                 <div class="col-lg-3 col-md-6 col-sm-8 col-8">
                     <div class="">
-                        <a href="{{ url('/') }}">
-                            <img class="img-fluid" alt="logo" src="{{ getLogo() }}">
+                        <a href="{{ url('/') }}" title="{{ setting('website_title') }}">
+                            <img class="img-fluid" alt="{{ setting('website_title') }}" src="{{ getLogo() }}">
                         </a>
                     </div>
                 </div>
@@ -246,10 +274,10 @@
                 </div>
             </div>
             <ul class="nav flex-column mt-5 lead text-center">
-                <li class="my-2"><a href="{{ url('/') }}">{{ __('home.home') }}</a></li>
+                <li class="my-2"><a href="{{ url('/') }}" title="{{ setting('website_title') }}">{{ __('home.home') }}</a></li>
                 <li class="my-2">
                     <div class="dropdown">
-                        <a class="dropbtn" href="#">
+                        <a class="dropbtn" href="#" title="{{ url(setting('about_us')) }}">
                             <i class="fa fa-arrow-circle-down"></i>{{ __('home.about_us') }}
                         </a>
                         <div class="dropdown-content">
@@ -257,7 +285,9 @@
                                 $title = session('lang') . '_title';
                             @endphp
                             @foreach($abouts as $about)
-                                <a href=" {{ url(setting('about_us') . '?tab='.$about->$title) }} ">{{ $about->$title }}</a>
+                                <a href="{{ url(setting('about_us') . '?tab='.$about->$title) }}" title="{{ url(setting('about_us') . '?tab='.$about->$title) }}">
+                                    {{ $about->$title }}
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -265,16 +295,17 @@
 
                 <li class="my-2">
                     <div class="dropdown">
-                        <a class="dropbtn" href="{{ url(setting('our_services')) }}">
+                        <a class="dropbtn" href="{{ url(setting('our_services')) }}" title="{{ url(setting('our_services')) }}">
                             <i class="fa fa-arrow-circle-down"></i> {{ __('home.our_services') }}
                         </a>
                         <div class="dropdown-content">
                             @php
                                 $title = session('lang') . '_title';
+                                $meta_tag = session('lang') . '_meta_tag';
                             @endphp
                             @foreach($services as $index => $service)
 
-                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
+                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}">
                                     {{ $service->$title }} <i class="fa fa-chevron-circle-right"></i>
                                 </a>
                                 @for($i = 0;$i < count($subCategory); $i++)
@@ -285,7 +316,7 @@
                                                 $id = $allValue[1];
                                                 $name = $allValue[0];
                                             @endphp
-                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" class="ml-4">
+                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" class="ml-4" title="{{ $name }}">
                                                 {{ $name }}
                                             </a>
                                         @endif
@@ -296,18 +327,30 @@
                     </div>
                 </li>
 
-                <li class="my-2"><a href="{{ url(setting('our_projects')) }}">{{ __('home.our_projects') }}</a></li>
+                <li class="my-2"><a href="{{ url(setting('our_projects')) }}" title="{{ setting('our_projects') }}">{{ __('home.our_projects') }}</a></li>
 
-                <li class="my-2"><a href="{{ url(setting('blogs')) }}">{{ __('home.blogs') }}</a></li>
-                <li class="my-2"><a href="{{ url(setting('contact_us')) }}">{{ __('admin.contact_us') }}</a></li>
+                <li class="my-2">
+                    <a href="{{ url(setting('blogs')) }}" title="{{ setting('blogs') }}">
+                        {{ __('home.blogs') }}
+                    </a>
+                </li>
+                <li class="my-2">
+                    <a href="{{ url(setting('contact_us')) }}" title="{{ setting('contact_us') }}">
+                        {{ __('admin.contact_us') }}
+                    </a>
+                </li>
                 <li class="my-2">
                     <div class="dropdown">
                         <a class="dropbtn" href="#">
                             <i class="fa fa-arrow-circle-down"></i> {{ __('admin.languages') }}
                         </a>
                         <div class="dropdown-content">
-                            <a href="{{ url('lang/ar') }}">{{ __('home.arabic') }}</a>
-                            <a href="{{ url('lang/en') }}">{{ __('home.english') }}</a>
+                            <a href="{{ url('lang/ar') }}" title="{{ __('home.arabic') }}">
+                                {{ __('home.arabic') }}
+                            </a>
+                            <a href="{{ url('lang/en') }}" title="{{ __('home.english') }}">
+                                {{ __('home.english') }}
+                            </a>
                         </div>
                     </div>
                 </li>
@@ -326,7 +369,7 @@
                         $title = session('lang') . '_title';
                     @endphp
                     <h1 class="font-weight-bold">
-                        <a href="{{ url('/') }}" class="typewrite text-white" data-period="2000" data-type='[]'>
+                        <a href="{{ url('/') }}" class="typewrite text-white" data-period="2000" data-type='[]' title="{{ setting('website_title') }}">
                             <span class="wrap">&nbsp;</span>
                         </a>
                     </h1>

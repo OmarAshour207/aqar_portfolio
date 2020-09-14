@@ -17,7 +17,7 @@
                         $desc = session('lang') . '_description';
                     @endphp
                     <p class="text-justify"> {{ $aboutUs->$desc }} </p>
-                    <a class="btn btn--primary type--uppercase" href="{{ url('about') }}">
+                    <a class="btn btn--primary type--uppercase" href="{{ url('about') }}" title="{{ setting('about_us') }}">
                             <span class="btn__text">
                         {{ __('home.learn_more_about_us') }}
                         </span>
@@ -47,7 +47,6 @@
     </section>
     <!-- end service section -->
 
-
     <!-- start service section -->
     @if(in_array('our_services', $page_filter))
     <section class="bg--secondary cms-tech pb-0">
@@ -62,7 +61,7 @@
                         $desc = session('lang') . '_description';
                     @endphp
                     <p class="text-justify"> {{ $aboutUs->$desc }} </p>
-                    <a class="btn btn--primary type--uppercase" href="{{ url('about') }}">
+                    <a class="btn btn--primary type--uppercase" href="{{ url('about') }}" title="{{ setting('about_us') }}">
                             <span class="btn__text">
                         {{ __('home.learn_more_about_us') }}
                         </span>
@@ -73,16 +72,17 @@
                         @php
                             $title = session('lang') . '_title';
                             $desc = session('lang') . '_description';
+                            $meta_tag = session('lang') . '_meta_tag';
                         @endphp
                         <div class="col-md-6">
                             @foreach($services as $index => $service)
-                            <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" class="font-weight-normal">
+                            <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}" class="font-weight-normal">
                                 <div class="card card-2 text-center aos-init aos-animate" data-aos="fade-up" data-aos-duration="500">
                                     <div class="card__top">
                                         <img alt="Wordpress" src="{{ $service->service_image }}" class="img-fluid mb-3" style="width: 68px;height: 60px;">
                                     </div>
                                     <div class="card__body pt-0">
-                                        <h4>{{ $service->$title }}</h4>
+                                        <h4 title="{{ $service->$meta_tag }}">{{ $service->$title }}</h4>
                                         <p class="mb-0">
                                             {{ $service->$desc }}
                                         </p>
@@ -100,10 +100,10 @@
                                     <a href="javascript:void(0)" class="font-weight-normal">
                                         <div class="card card-2 text-center aos-init aos-animate" data-aos="fade-up" data-aos-duration="500">
                                             <div class="card__top">
-                                                <img alt="Wordpress" src="{{ $service->service_image }}" class="img-fluid mb-3" style="width: 68px;height: 60px;">
+                                                <img alt="{{ $service->$meta_tag }}" src="{{ $service->service_image }}" class="img-fluid mb-3" style="width: 68px;height: 60px;">
                                             </div>
                                             <div class="card__body pt-0">
-                                                <h4>{{ $service->$title }}</h4>
+                                                <h4 title="{{ $service->$meta_tag }}">{{ $service->$title }}</h4>
                                                 <p class="mb-0">
                                                     {{ $service->$desc }}
                                                 </p>
@@ -140,18 +140,19 @@
                     <div class="lazy" id="industry_serve">
                         @php
                             $title = session('lang') . '_title';
+                            $meta_tag = session('lang') . '_meta_tag';
                         @endphp
                         @foreach($projects as $index => $project)
                             <div class="project-thumb hover-element hover--active">
                                 <a href="javascript:void(0)">
                                     <div class="hover-element__initial">
                                         <div class="background-image-holder">
-                                            <img src="{{ $project->project_image }}" data-lazy="{{ $project->project_image }}" alt="Business" />
+                                            <img src="{{ $project->project_image }}" data-lazy="{{ $project->project_image }}" alt="{{ $project->meta_tag }}" />
                                         </div>
                                     </div>
                                     <div class="hover-element__reveal" data-overlay="9">
                                         <div class="project-thumb__title">
-                                            <h5>{{ $project->$title }}</h5>
+                                            <h5 title="{{ $project->$title }}">{{ $project->$title }}</h5>
                                         </div>
                                     </div>
                                 </a>
@@ -171,13 +172,14 @@
                     <div class="lazy" id="industry_serve2">
                         @php
                             $title = session('lang') . '_title';
+                            $meta_tag = session('lang') . '_meta_tag';
                         @endphp
                         @foreach($projects as $index => $project)
                             <div class="project-thumb hover-element hover--active" style="border-radius: 14px;">
-                                <a href="javascript:void(0)">
+                                <a href="javascript:void(0)" title="{{ $project->$meta_tag }}">
                                     <div class="hover-element__initial">
                                         <div class="background-image-holder">
-                                            <img src="{{ $project->project_image }}" data-lazy="{{ $project->project_image }}" alt="Business" />
+                                            <img src="{{ $project->project_image }}" data-lazy="{{ $project->project_image }}" alt="{{ $project->$meta_tag }}" />
                                         </div>
                                     </div>
                                     <div class="hover-element__reveal" data-overlay="9">
@@ -206,13 +208,14 @@
                 @php
                     $title = session('lang') . '_title';
                     $desc = session('lang') . '_description';
+                    $meta_tag = session('lang') . '_meta_tag';
                 @endphp
                 @foreach($testimonials as $index => $testimonial)
                     <div class="col-lg-4 col-md-6">
                         <div class="blog-block flex-column">
                             <div class="blog-img w-100">
                                 @if ($testimonial->status == 1)
-                                    <img src="{{ $testimonial->testimonial_image }}" alt="Blog Image">
+                                    <img src="{{ $testimonial->testimonial_image }}" alt="{{ $testimonial->$meta_tag }}">
                                 @else
                                     <iframe width="420" height="315"
                                             src="https://www.youtube.com/embed/{{ getYoutubeId($testimonial->video) }}" allowfullscreen>
@@ -222,7 +225,7 @@
                             <div class="blog-content">
 
                                 <h4 class="mb-2">
-                                    <a href="#">
+                                    <a href="#" title="{{ $testimonial->$meta_tag }}">
                                         {{ $testimonial->$title }}
                                     </a>
                                 </h4>

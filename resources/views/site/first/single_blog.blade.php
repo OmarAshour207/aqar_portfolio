@@ -7,6 +7,7 @@
     @php
         $title = session('lang') . '_title';
         $content = session('lang') . '_content';
+        $meta_tag = session('lang') . '_meta_tag';
     @endphp
     <!-- start blog section -->
     <section class="blog-section single">
@@ -19,9 +20,9 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <p class="mb-0 text-orange font-weight-bold  tiny-title">{{ date('d M' , strtotime($blog->create_at)) }}</p>
-                            <h2>{{ $blog->$title }}</h2>
+                            <h2 title="{{ $blog->$meta_tag }}">{{ $blog->$title }}</h2>
                             <div class="blog-img main-blog-img w-100">
-                                <img src="{{ $blog->blog_image }}" class="img-fluid" alt="blog-img">
+                                <img src="{{ $blog->blog_image }}" class="img-fluid" alt="{{ $blog->$meta_tag }}">
                             </div>
                             <div class="blog-block flex-column">
                                 <div class="blog-content full mt-5">
@@ -40,11 +41,11 @@
                                     @foreach($blogs as $recent)
                                         <div class="blog-block justify-content-between d-flex mb-4">
                                         <div class="blog-img side-img">
-                                            <img src="{{ $recent->blog_image }}" class="img-fluid" alt="blog-img">
+                                            <img src="{{ $recent->blog_image }}" class="img-fluid" alt="{{ $recent->$meta_tag }}">
                                         </div>
                                         <div class="side-content pl-3">
-                                            <h4 class="mb-0">
-                                                <a href="{{ route('blog.show', ['id' => $recent->id, 'title' => $recent->$title]) }}">
+                                            <h4 class="mb-0" title="{{ $recent->$meta_tag }}">
+                                                <a href="{{ route('blog.show', ['id' => $recent->id, 'title' => $recent->$title]) }}" title="{{ $recent->$meta_tag }}">
                                                     {{ $recent->$title }}
                                                 </a>
                                             </h4>

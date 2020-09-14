@@ -14,13 +14,13 @@
                         $title = session('lang') . '_title';
                         $desc = session('lang') . '_description';
                     @endphp
-                    <h2>{{ $aboutUs->$title }}</h2>
+                    <h2 title="{{ $aboutUs->$title }}">{{ $aboutUs->$title }}</h2>
                     <p class="text-justify pr-3">{{ $aboutUs->$desc }}</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-8 col-8">
                     <div class="abt-img">
                         <div class="video-thumb">
-                            <img src="{{ $aboutUs->about_image }}" class="img-fluid mb-0 w-100" alt="image">
+                            <img src="{{ $aboutUs->about_image }}" class="img-fluid mb-0 w-100" alt="{{ $aboutUs->$title }}">
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                                             <div class="row">
                                                 <div class="col-md-10 col-lg-10">
                                                     <div class="mt--1 mb--1 content-box">
-                                                        <h3>{{ $about->$title }}</h3>
+                                                        <h3 title="{{ $aboutUs->$title }}">{{ $about->$title }}</h3>
                                                         <p>
                                                             {{ $about->$desc }}
                                                         </p>
@@ -98,7 +98,7 @@
                         $title = session('lang') . '_title';
                         $desc = session('lang') . '_description';
                     @endphp
-                    <h2>{{ $aboutUs->$title }}</h2>
+                    <h2 title="{{ $aboutUs->$title }}">{{ $aboutUs->$title }}</h2>
                     <p>
                         {{ $aboutUs->$desc }}
                     </p>
@@ -157,7 +157,7 @@
                     <h2 class="text-white mb-0"> {{ __('home.like_what_see') }} </h2>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <a href="{{ url('contact-us') }}" class="btn text-white bottom-link mb-0">{{ __('home.hire_us') }}</a>
+                    <a href="{{ url(setting('contact_us')) }}" title="{{ setting('contact_us') }}" class="btn text-white bottom-link mb-0">{{ __('home.hire_us') }}</a>
                 </div>
             </div>
         </div>
