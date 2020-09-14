@@ -94,5 +94,7 @@ return [
     'recent_blogs'          => 'المقالات الاخيره',
     'all_services'          => 'جميع الخدمات',
     'login'                 => 'تسجيل الدخول',
-    'password'              => 'كلمه السر'
+    'password'              => 'كلمه السر',
+    'employee'              => 'عامل',
+    'customer'              => 'عميل',
 ];

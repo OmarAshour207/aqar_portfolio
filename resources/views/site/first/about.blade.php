@@ -281,10 +281,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-12">
-                    <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">Projects</p>
-                    <h2>We made it happen with Digital Marketing approach</h2>
+                    <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">{{ __('home.projects') }}</p>
+                    @php
+                        $title = session('lang') . '_title';
+                        $desc = session('lang') . '_description';
+                    @endphp
+                    <h2>{{ $aboutUs->$title }}</h2>
                     <p>
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+                        {{ $aboutUs->$desc }}
                     </p>
                 </div>
                 <div class="col-lg-8 col-md-12 counter-block">
@@ -293,8 +297,8 @@
                             <div class="boxed bg-transparent d-flex align-items-center justify-content-center boxed--border">
                                 <i class="fas fa-store fa-3x mr-3"></i>
                                 <div class="employees">
-                                    <p class="counter-count">879</p>
-                                    <p class="employee-p">Employee</p>
+                                    <p class="counter-count">{{ $teamCount }}</p>
+                                    <p class="employee-p">{{ __('home.employee') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -302,8 +306,8 @@
                             <div class="boxed bg-transparent d-flex align-items-center justify-content-center boxed--border">
                                 <i class="fas fa-crown fa-3x mr-3"></i>
                                 <div class="customer">
-                                    <p class="counter-count">954</p>
-                                    <p class="customer-p">Customer</p>
+                                    <p class="counter-count">{{ $clientCount }}</p>
+                                    <p class="customer-p">{{ __('home.customer') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -311,8 +315,8 @@
                             <div class="boxed bg-transparent d-flex align-items-center justify-content-center boxed--border">
                                 <i class="fas fa-edit fa-3x mr-3"></i>
                                 <div class="design">
-                                    <p class="counter-count">1050</p>
-                                    <p class="design-p">Design</p>
+                                    <p class="counter-count">{{ $projectCount }}</p>
+                                    <p class="design-p">{{ __('home.projects') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -320,8 +324,8 @@
                             <div class="boxed bg-transparent d-flex align-items-center justify-content-center boxed--border">
                                 <i class="fas fa-user fa-3x mr-3"></i>
                                 <div class="order">
-                                    <p class="counter-count">652</p>
-                                    <p class="order-p">Orders</p>
+                                    <p class="counter-count">{{ $blogCount }}</p>
+                                    <p class="order-p">{{ __('admin.blog') }}</p>
                                 </div>
                             </div>
                         </div>

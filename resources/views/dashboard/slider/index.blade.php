@@ -59,14 +59,14 @@
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {!! substr($slider->ar_title, 0, 20)  !!}
+                                        {{ substr($slider->ar_title, 0, 20)  }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {!! substr($slider->en_title, 0, 20)  !!}
+                                        {{ substr($slider->en_title, 0, 20)  }}
                                     </div>
                                 </div>
                             </td>
@@ -74,14 +74,14 @@
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {!! substr($slider->ar_description, 0, 20)  !!}
+                                        {{ substr($slider->ar_description, 0, 20)  }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {!! substr($slider->en_description, 0, 20)  !!}
+                                        {{ substr($slider->en_description, 0, 20)  }}
                                     </div>
                                 </div>
                             </td>

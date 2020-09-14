@@ -5,32 +5,14 @@
     <section class="hero pt-0">
         <div class="main-banner">
             <div class="slideshow-container">
-
+                @foreach($sliders as $index => $slider)
                 <div class="mySlides fade">
-                    <a href=""><img src="https://i.resimyukle.xyz/2cT9VW.jpg"></a>
+                    <a href="">
+                        <img src="{{ $slider->slider_image }}">
+                    </a>
                     <!--        <div class="text">Caption Text</div>-->
                 </div>
-
-                <div class="mySlides fade">
-                    <a href=""><img src="https://i.resimyukle.xyz/7fN7cM.jpg"></a>
-
-                </div>
-
-                <div class="mySlides fade">
-                    <a href=""><img src="https://i.resimyukle.xyz/x2QJQK.jpg"></a>
-
-                </div>
-
-                <div class="mySlides fade">
-                    <a href=""><img src="https://i.resimyukle.xyz/VQH4yf.jpg"></a>
-
-                </div>
-
-                <div class="mySlides fade">
-                    <a href=""><img src="https://i.resimyukle.xyz/AWHL3H.jpg"></a>
-
-                </div>
-
+                @endforeach
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
@@ -333,18 +315,25 @@
 
             <div class="row align-items-center justify-content-around banner-content" data-aos="fade-up">
                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-8 text-center banner-line">
-
+                    @php
+                        $title = session('lang') . '_title';
+                    @endphp
                     <h1 class="font-weight-bold">
-                        <a href="{{ url('/') }}" class="typewrite text-white" data-period="2000" data-type='[ {{ setting('website_title') }} ]'>
-                            <span class="wrap">&nbsp;</span>
-                        </a>
+                        @foreach($sliders as $index => $slider)
+                            <a href="{{ url('/') }}" class="typewrite text-white" data-period="2000" data-type='[ "{{ $slider->$title }}" ]'>
+                                <span class="wrap">&nbsp;</span>
+                            </a>
+                            @if($index == 0)
+                                @break
+                            @endif
+                        @endforeach
                     </h1>
                     <p class="lead text-white">
                         @php
                             $desc = session('lang') . '_description';
                         @endphp
                         @foreach($sliders as $index => $slider)
-                            {!! $slider->$desc !!}
+                            {{ $slider->$desc }}
                             @if($index == 0)
                                 @break
                             @endif
@@ -547,7 +536,7 @@
     </section>
     @endif
 
-    @if(in_array('latest_blogs', $page_filter))
+    @if(in_array('latest_blog', $page_filter))
     <section class="blog-section sec-title">
         <div class="container">
             <div class="row">

@@ -12,6 +12,7 @@ use App\Models\TeamMember;
 use App\Models\Testimonial;
 use App\Models\Visitor;
 use App\Models\WebsiteSetting;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -115,10 +116,16 @@ class HomeController extends Controller
         $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
 
+        $teamCount = TeamMember::all()->count();
+        $clientCount = User::all()->count();
+        $projectCount = Project::all()->count();
+        $blogCount = Blog::all()->count();
+
         return view('site.' . $name . '.about',
             compact('abouts', 'projects',
                             'aboutUs', 'services',
-                            'subCategory'));
+                            'subCategory', 'teamCount',
+                            'clientCount', 'projectCount', 'blogCount'));
     }
 
     public function blogsPage()

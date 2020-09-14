@@ -78,5 +78,7 @@ return [
     'recent_blogs'          => 'Recent Blogs',
     'all_services'          => 'All Services',
     'login'                 => 'Login',
-    'password'              => 'Password'
+    'password'              => 'Password',
+    'employee'              => 'Employee',
+    'customer'              => 'Customer',
 ];
