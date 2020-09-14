@@ -16,7 +16,9 @@ class Testimonial extends Model
         'en_description',
         'ar_meta_tag',
         'en_meta_tag',
-        'image'
+        'image',
+        'video',
+        'status'
     ];
 
     public function getTestimonialImageAttribute()

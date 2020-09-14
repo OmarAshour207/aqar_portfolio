@@ -24,4 +24,16 @@ class ContactInfoController extends Controller
         session()->flash('success', __('admin.added_successfully'));
         return redirect()->back();
     }
+
+    public function showPage()
+    {
+        return view('dashboard.seo.pages');
+    }
+
+    public function storePages(Request $request)
+    {
+        setting($request->except('_token', 'add'))->save();
+        session()->flash('success', __('admin.added_successfully'));
+        return redirect()->back();
+    }
 }

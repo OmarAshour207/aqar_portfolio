@@ -130,6 +130,16 @@ return [
     'is_admin'              => 'Is Admin',
     'admin_role'            => 'Admin',
     'parent'                => 'Parent',
-    'parent_name'           => 'Parent Name'
+    'parent_name'           => 'Parent Name',
+    'choose_between_photo_video'    => 'Choose between Photo or video to show in Home Page',
+    'video'                 => 'Video',
+    'video_link_on_youtube' => 'Video Link on youtube',
+    'names_pages'           => 'Names Pages',
+    'data'                  => 'Data',
+    'users_data'            => 'Users Data',
+    'ar_data'               => 'Arabic Data',
+    'en_data'               => 'English Data',
+    'choose_user'           => 'Choose User',
+    'pages'                 => 'Pages'
 
 ];

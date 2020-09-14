@@ -97,4 +97,9 @@ return [
     'password'              => 'كلمه السر',
     'employee'              => 'عامل',
     'customer'              => 'عميل',
+    'clients_reviews'       => 'مراجعات العملاء',
+    'reviews'               => 'المراجعات',
+    'info'                  => 'معلومات',
+    'data'                  => 'البيانات',
+    'users_data'            => 'بيانات المستخدمين'
 ];

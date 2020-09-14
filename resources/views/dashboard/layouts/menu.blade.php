@@ -25,6 +25,12 @@
                         <span class="sidebar-menu-text"> {{ __('admin.users') }} </span>
                     </a>
                 </li>
+                <li class="sidebar-menu-item">
+                    <a class="sidebar-menu-button" href="{{ route('data.index') }}">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-database"></i>
+                        <span class="sidebar-menu-text"> {{ __('admin.users_data') }} </span>
+                    </a>
+                </li>
 
                 <li class="sidebar-menu-item">
                     <a class="sidebar-menu-button" href="{{ route('slider.index') }}">
@@ -106,6 +112,12 @@
                             <a class="sidebar-menu-button" href="{{ route('settings.seo') }}">
                                 <i class="fa fa-rss"></i>
                                 <span class="sidebar-menu-text"> {{ __('admin.seo') }}</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a class="sidebar-menu-button" href="{{ route('settings.pages') }}">
+                                <i class="fa fa-paperclip"></i>
+                                <span class="sidebar-menu-text"> {{ __('admin.pages') }}</span>
                             </a>
                         </li>
                         <li class="sidebar-menu-item">

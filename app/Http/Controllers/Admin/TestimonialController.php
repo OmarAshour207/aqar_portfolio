@@ -30,17 +30,18 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'ar_name'          => 'required|string',
-            'en_name'          => 'required|string',
-            'ar_title'         => 'required|string',
-            'en_title'         => 'required|string',
-            'ar_description'   => 'required|string|min:10',
-            'en_description'   => 'required|string|min:10',
-            'ar_meta_tag'      => 'required|string',
-            'en_meta_tag'      => 'required|string',
+            'ar_name'           => 'required|string',
+            'en_name'           => 'required|string',
+            'ar_title'          => 'required|string',
+            'en_title'          => 'required|string',
+            'ar_description'    => 'required|string|min:10',
+            'en_description'    => 'required|string|min:10',
+            'ar_meta_tag'       => 'required|string',
+            'en_meta_tag'       => 'required|string',
+            'video'             => 'sometimes|nullable|string',
+            'status'            => 'required|numeric'
         ]);
-
-        $data['image'] = $request->image;
+        $data['image'] = $request->has('image') ? $request->image : '';
 
         Testimonial::create($data);
         session()->flash('success', __('admin.added_successfully'));
@@ -55,16 +56,18 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $data = $request->validate([
-            'ar_name'          => 'required|string',
-            'en_name'          => 'required|string',
-            'ar_title'         => 'required|string',
-            'en_title'         => 'required|string',
-            'ar_description'   => 'required|string|min:10',
-            'en_description'   => 'required|string|min:10',
-            'ar_meta_tag'      => 'required|string',
-            'en_meta_tag'      => 'required|string',
+            'ar_name'           => 'required|string',
+            'en_name'           => 'required|string',
+            'ar_title'          => 'required|string',
+            'en_title'          => 'required|string',
+            'ar_description'    => 'required|string|min:10',
+            'en_description'    => 'required|string|min:10',
+            'ar_meta_tag'       => 'required|string',
+            'en_meta_tag'       => 'required|string',
+            'video'             => 'sometimes|nullable|string',
+            'status'            => 'required|numeric'
         ]);
-        $data['image'] = $request->image;
+        $data['image'] = $request->has('image') ? $request->image : '';
 
         $testimonial->update($data);
         session()->flash('success', __('admin.updated_successfully'));

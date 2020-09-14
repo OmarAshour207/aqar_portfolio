@@ -24,6 +24,8 @@ class CreateTestimonialsTable extends Migration
             $table->string('ar_meta_tag');
             $table->string('en_meta_tag');
             $table->string('image')->nullable();
+            $table->string('video')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Blog;
 use App\Models\Contactus;
+use App\Models\Data;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Slider;
@@ -202,13 +203,28 @@ class HomeController extends Controller
         $this->checkVisitor();
         $contactUs = Contactus::first();
         $aboutUs = About::first();
+        $services = Service::orderBy('id', 'desc')->limit(6)->get();
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
 
         return view('site.' . getThemeName() . '.contact',
-                compact('contactUs',
+                compact('contactUs', 'services',
                                 'aboutUs', 'abouts',
                                 'header_services', 'subCategory'));
+    }
+
+    public function profilePage()
+    {
+        $services = Service::orderBy('id', 'desc')->limit(6)->get();
+        $abouts = About::limit(6)->get();
+        $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
+        $subCategory = $this->getServices();
+        $data = Data::where('user_id', auth()->user()->id)->first();
+
+        return view('site.first.profile',
+                compact('services', 'abouts',
+                                'header_services', 'subCategory',
+                                'data'));
     }
 }

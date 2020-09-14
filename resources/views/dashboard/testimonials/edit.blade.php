@@ -16,8 +16,8 @@
                 params: {
                     _token: '{{ csrf_token() }}',
                     path: path,
-                    width: 100,
-                    height: 100
+                    width: 600,
+                    height: 400
                 },
                 addRemoveLinks: true,
                 removedfile:function (file) {
@@ -127,6 +127,20 @@
                         <label for="en_meta_tag"> {{ trans('admin.testimonials') }} / {{ trans('admin.en_meta_tag') }}</label>
                         <input id="en_meta_tag" name="en_meta_tag" type="text" class="form-control" placeholder="{{ trans('admin.en_meta_tag') }}" value="{{ $testimonial->en_meta_tag }}">
                     </div>
+
+                    <div class="form-group">
+                        <label for="video"> {{ trans('admin.testimonials') }} / {{ trans('admin.video') }}</label>
+                        <input id="video" name="video" type="url" class="form-control" placeholder="{{ trans('admin.video_link_on_youtube') }}" value="{{ $testimonial->video }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status"> {{ __('admin.testimonials') }} / {{ __('admin.choose_between_photo_video') }} </label>
+                        <select class="form-control select2" name="status">
+                            <option value="1" {{ $testimonial->status == 1 ? 'selected' : '' }}> {{ __('admin.image') }} </option>
+                            <option value="2" {{ $testimonial->status == 2 ? 'selected' : '' }}> {{ __('admin.video') }} </option>
+                        </select>
+                    </div>
+
 
                     <div class="form-group">
                         <input class="image_name" type="hidden" name="image" value="{{ $testimonial->image }}">

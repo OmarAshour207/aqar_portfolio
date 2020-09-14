@@ -2,6 +2,8 @@
 
 namespace Illuminate\Foundation\Auth;
 
+use App\Models\About;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +20,14 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('site.first.login');
+        $services = Service::orderBy('id', 'desc')->limit(6)->get();
+        $abouts = About::limit(6)->get();
+        $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
+        $subCategory = getServices();
+
+        return view('site.first.login',
+                compact('services', 'abouts',
+                                'header_services', 'subCategory'));
     }
 
     /**

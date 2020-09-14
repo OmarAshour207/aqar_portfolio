@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Service;
+
 function getLogo()
 {
     $data = \App\Models\Logo::first();
@@ -26,4 +28,27 @@ function getThemeName()
 {
     $theme = \App\Models\Theme::where('status', 1)->first();
     return $theme->en_title;
+}
+
+function getServices()
+{
+    $subServices = Service::where('parent_id', '!=', null)->get();
+    $parentServices = Service::where('parent_id', null)->get();
+    $subCategory = [];
+    foreach ($parentServices as $parent) {
+        foreach ($subServices as $index => $sub) {
+            if ($parent->id == $sub->parent_id) {
+                array_push($subCategory, [
+                    $parent->id   => $sub->en_title . '-' .$sub->id
+                ]);
+            }
+        }
+    }
+    return $subCategory;
+}
+
+function getYoutubeId($url)
+{
+    parse_str(parse_url($url, PHP_URL_QUERY), $result);
+    return $result['v'];
 }

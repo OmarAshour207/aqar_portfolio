@@ -8,12 +8,12 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}"><i class="material-icons icon-20pt">home</i> {{ trans('admin.home') }} </a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ trans('admin.testimonials') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ trans('admin.data') }}</li>
                         </ol>
                     </nav>
-                    <h1 class="m-0"> {{ trans('admin.testimonials') }} </h1>
+                    <h1 class="m-0"> {{ trans('admin.data') }} </h1>
                 </div>
-                <a href="{{ route('testimonials.create') }}" class="btn btn-success ml-3">{{ trans('admin.create') }} <i class="material-icons">add</i></a>
+                <a href="{{ route('data.create') }}" class="btn btn-success ml-3">{{ trans('admin.create') }} <i class="material-icons">add</i></a>
             </div>
         </div>
 
@@ -34,20 +34,17 @@
                             </th>
 
                             <th style="width: 30px;" > {{ trans('admin.id') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.ar_name') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.en_name') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.ar_title') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.en_title') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.ar_description') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.en_description') }} </th>
-                            <th style="width: 40px;" > {{ trans('admin.status') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.name') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.email') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.ar_data') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.en_data') }} </th>
                             <th style="width: 120px;" >{{ trans('admin.image') }}</th>
                             <th style="width: 30px;" > {{ trans('admin.action') }} </th>
                         </tr>
                         </thead>
                         <tbody class="list" id="companies">
-                        @if($testimonials->count() > 0)
-                            @foreach($testimonials as $index => $testimonial)
+                        @if($data->count() > 0)
+                            @foreach($data as $index => $d)
                         <tr>
                             <td class="text-left">
                                 <div class="custom-control custom-checkbox">
@@ -62,14 +59,7 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->ar_name }}
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="width: 40px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {{ $testimonial->en_name }}
+                                        {{ $d->user->name }}
                                     </div>
                                 </div>
                             </td>
@@ -77,50 +67,34 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->ar_title }}
+                                        {{ $d->user->email }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->en_title }}
+                                        {!! substr($d->ar_data, 0, 70) !!}
                                     </div>
                                 </div>
                             </td>
-
-                            <td style="width: 120px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {{ substr($testimonial->ar_description, 0, 20) }}
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="width: 120px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {{ substr($testimonial->en_description, 0, 20) }}
-                                    </div>
-                                </div>
-                            </td>
-
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $testimonial->status == 2 ? __('admin.video') : __('admin.image') }}
+                                        {!! substr($d->en_data, 0, 70) !!}
                                     </div>
                                 </div>
                             </td>
 
                             <td style="width:120px" class="text-center">
-                                <img src="{{ $testimonial->testimonial_image }}" style="width: 120px; height: 50px">
+                                <img src="{{ $d->data_image }}" style="width: 120px; height: 50px">
                             </td>
 
                             <td>
-                                <a href="{{ route('testimonials.edit', $testimonial->id) }}" class="btn btn-sm btn-link">
+                                <a href="{{ route('data.edit', $d->id) }}" class="btn btn-sm btn-link">
                                     <i class="fa fa-edit fa-2x"></i>
                                 </a>
-                                <form action="{{ route('testimonials.destroy', $testimonial->id) }}" method="post" style="display: inline-block">
+                                <form action="{{ route('data.destroy', $d->id) }}" method="post" style="display: inline-block">
                                     @csrf
                                     @method('delete')
 
@@ -129,7 +103,7 @@
                             </td>
                         </tr>
                         @endforeach
-                            {{ $testimonials->appends(request()->query())->links() }}
+                            {{ $data->appends(request()->query())->links() }}
                         @else
                             <h1> {{ trans('admin.no_records') }} </h1>
                         @endif

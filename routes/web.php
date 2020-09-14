@@ -3,17 +3,19 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@HomePage');
-Route::get('/about', 'HomeController@aboutPage');
+Route::get(setting('about_us'), 'HomeController@aboutPage');
 
-Route::get('/contact-us', 'HomeController@contact');
+Route::get(setting('contact_us'), 'HomeController@contact');
 Route::post('/send/contact', 'ContactController@sendContact')->name('send.contact');
 
-Route::get('/services', 'HomeController@servicesPage');
+Route::get(setting('our_services'), 'HomeController@servicesPage');
 Route::get('/services/{id}/{title}', 'HomeController@singleService')->name('service.show');
 
-Route::get('/projects', 'HomeController@projectsPage');
+Route::get(setting('our_projects'), 'HomeController@projectsPage');
 
-Route::get('/blogs', 'HomeController@blogsPage');
+Route::get(setting('profile'), 'HomeController@profilePage')->middleware('auth');
+
+Route::get(setting('blogs'), 'HomeController@blogsPage');
 Route::get('/blogs/{id}/{title}', 'HomeController@showBlog')->name('blog.show');
 
 Route::get('/lang/{language}', 'HomeController@changeLanguage');
@@ -49,6 +51,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'is_a
     Route::get('settings/contact-info', 'ContactInfoController@contactInfo')->name('settings.contact');
     Route::post('settings/contact-info', 'ContactInfoController@store')->name('settings.contact.store');
 
+    Route::get('settings/pages', 'ContactInfoController@showPage')->name('settings.pages');
+    Route::post('settings/pages', 'ContactInfoController@storePages')->name('settings.pages.store');
+
     Route::get('settings/seo', 'SeoController@showSeoPage')->name('settings.seo');
     Route::post('settings/seo', 'SeoController@store')->name('settings.seo.store');
 
@@ -61,6 +66,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'is_a
 
     Route::resource('users', 'UserController');
     Route::post('user/update/password/{id}', 'UserController@updatePassword')->name('update.password');
+
+    Route::resource('data', 'DataController');
 
     Route::post('upload/image', 'ImageController@uploadPhoto')->name('upload.image');
     Route::post('remove/image', 'ImageController@removePhoto')->name('remove.image');

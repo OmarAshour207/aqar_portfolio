@@ -1,87 +1,351 @@
-<!-- header -->
-<header class="site-header mo-left header">
-    <!-- main header -->
-    <div class="sticky-header main-bar-wraper navbar-expand-lg">
-        <div class="main-bar clearfix ">
-            <div class="container clearfix">
-                <!-- website logo -->
-                <div class="logo-header mostion logo-dark">
-                    <a href="{{ url('/') }}"><img src="{{ getLogo() }}" alt=""></a>
-                </div>
-                <!-- nav toggle button -->
-                <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <!-- extra nav -->
-                <div class="extra-nav">
-                    <div class="extra-cell">
-                        <button id="quik-search-btn" type="button" class="site-button-link"><i class="la la-search"></i></button>
+<!-- start main banner -->
+<section class="{{ Request::segment(1) == '' ? 'hero' : 'hero-inner' }} pt-0">
+
+    @if(Request::segment(1) == '')
+        <div class="main-banner mb-2">
+            <div class="slideshow-container">
+                @foreach($sliders as $index => $slider)
+                    <div class="mySlides fade">
+                        <a href="">
+                            <img src="{{ $slider->slider_image }}">
+                        </a>
+                        <!--        <div class="text">Caption Text</div>-->
                     </div>
-                </div>
-                <!-- Quik search -->
-                <div class="dlab-quik-search">
-                    <form action="#">
-                        <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
-                        <span id="quik-search-remove"><i class="ti-close"></i></span>
-                    </form>
-                </div>
-                <!-- main nav -->
-                <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
-                    <div class="logo-header d-md-block d-lg-none">
-                        <a href="{{ url('/') }}"><img src="{{ getLogo() }}" alt=""></a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li class="{{ setActiveHome('') }}">
+                @endforeach
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+            </div>
+
+
+            <style>
+                .mySlides {
+                    clip-path: polygon(50% 0%, 81% 0, 100% 0, 100% 65%, 50% 100%, 0 78%, 0 0, 18% 0);
+                }
+
+                .slideshow-container img {
+                    vertical-align: middle;
+                    height: 100%;
+                    object-fit: cover;
+                    width: 100%;
+                }
+                .slideshow-container {
+
+                    max-width:100%;
+                    height: 100%;
+                    position: relative;
+                    margin: auto;
+                }
+                .prev, .next {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 50%;
+
+                    width: auto;
+                    padding: 16px;
+                    margin-top: -22px;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 18px;
+                    transition: 0.6s ease;
+                    border-radius: 0 3px 3px 0;
+                    user-select: none;
+                }
+                .next {
+                    right: 0;
+                    border-radius: 3px 0 0 3px;
+                }
+                .prev:hover, .next:hover {
+                    background-color: rgba(0, 0, 0, 0.72);
+                }
+                .text {
+                    color: white;
+                    font-size: 110%;
+                    padding: 13px;
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    background: rgba(14, 15, 16, 0.67);;
+                    text-align: center;
+                }
+                .dot {
+                    cursor: pointer;
+                    height: 3px;
+                    width: 20px;
+                    margin: 0 2px;
+                    background-color: #e1e1e1;
+                    display: inline-block;
+                    transition: background-color 0.6s ease;
+                }
+                .active, .dot:hover {
+                    background-color: black;
+                }
+                .fade {
+                    -webkit-animation-name: fade;
+                    -webkit-animation-duration: 1.5s;
+                    animation-name: fade;
+                    animation-duration: 1.5s;
+                }
+                @-webkit-keyframes fade {
+                    from {opacity: .4}
+                    to {opacity: 1}
+                }
+                @keyframes fade {
+                    from {opacity: .4}
+                    to {opacity: 1}
+                }
+                @media only screen and (max-width: 300px) {
+                    .prev, .next,.text {font-size: 11px}
+                }
+            </style>
+            <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("dot");
+                    if (n > slides.length) {slideIndex = 1}
+                    if (n < 1) {slideIndex = slides.length}
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex-1].style.display = "block";
+                    dots[slideIndex-1].className += " active";
+                }
+            </script>
+        </div>
+    @endif
+    <!-- start main header -->
+    <div class="nav-container aos-init aos-animate" data-aos="fade-down">
+        <nav id="menu1">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-8">
+                        <div class="">
                             <a href="{{ url('/') }}">
-                                <i class="fa fa-home" style="font-size: 18px;"></i> {{ __('home.home') }}
+                                <img class="img-fluid logo" alt="Elements" src="{{ getLogo() }}" style="max-width: 97px;"/>
                             </a>
-                        </li>
-
-                        <li class="{{ setActive('about') }}">
-                            <a href="{{ url('about') }}">
-                                <i class="fa fa-info" style="font-size: 18px"></i> {{ __('home.about_us') }}
-                            </a>
-                        </li>
-
-                        <li class="{{ setActive('services') }}">
-                            <a href="{{ url('services') }}"> {{ __('home.our_services') }} </a>
-                        </li>
-
-                        <li class="{{ setActive('projects') }} ">
-                            <a href="{{ url('projects') }}"> {{ trans('home.our_projects') }}</a>
-                        </li>
-
-                        <li class="{{ setActive('blogs') }}">
-                            <a href="{{ url('blogs') }}">
-                                <i class="fa fa-book-open" style="font-size: 18px"></i> {{ trans('home.blogs') }}
-                            </a>
-                        </li>
-
-                        <li class="{{ setActive('contact-us') }}">
-                            <a href="{{ url('contact-us') }}">
-                                <i class="fa fa-phone" style="font-size: 18px"></i> {{ trans('home.contact_us') }}
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;"> {{ trans('home.language') }}  <i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu tab-content">
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12 text-right hidden-md hidden-sm hidden-xs d-flex justify-content-end align-items-center">
+                        <div class="bar__module">
+                            <ul class="menu-horizontal text-left">
+                                <li><a href="{{ url('/') }}">{{ __('home.home') }}</a></li>
                                 <li>
-                                    <a href="{{ url('lang/ar') }}"><i class="fa fa-flag" style="font-size: 18px"></i> {{ trans('home.arabic') }}</a>
+                                    <div class="dropdown">
+                                        <a class="dropbtn" href="#">
+                                            {{ __('home.about_us') }}
+                                        </a>
+                                        <div class="dropdown-content">
+                                            @php
+                                                $title = session('lang') . '_title';
+                                            @endphp
+                                            @foreach($abouts as $about)
+                                                <a href="{{ url(setting('about_us') . '?tab=' . $about->$title) }}">{{ $about->$title }}</a>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </li>
+
                                 <li>
-                                    <a href="{{ url('lang/en') }}"><i class="fa fa-flag" style="font-size: 18px"></i> {{ trans('home.english') }}</a>
+                                    <div class="dropdown">
+                                        <a class="dropbtn" href="{{ url(setting('our_services')) }}">
+                                            {{ __('home.our_services') }}
+                                        </a>
+                                        <div class="dropdown-content">
+                                            @php
+                                                $title = session('lang') . '_title';
+                                            @endphp
+                                            @foreach($services as $index => $service)
+
+                                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
+                                                    {{ $service->$title }} <i class="fa fa-chevron-circle-right"></i>
+                                                </a>
+                                                @for($i = 0;$i < count($subCategory); $i++)
+                                                    @foreach($subCategory[$i] as $index => $sub)
+                                                        @if($index == $service->id)
+                                                            @php
+                                                                $allValue = explode('-', $sub);
+                                                                $id = $allValue[1];
+                                                                $name = $allValue[0];
+                                                            @endphp
+                                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" class="ml-4">
+                                                                {{ $name }}
+                                                            </a>
+                                                        @endif
+                                                    @endforeach
+                                                @endfor
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li><a href="{{ url(setting('our_projects')) }}">{{ __('home.our_projects') }}</a></li>
+
+                                <li><a href="{{ url(setting('blogs')) }}">{{ __('home.blogs') }}</a></li>
+                                <li><a href="{{ url(setting('contact_us')) }}">{{ __('admin.contact_us') }}</a></li>
+                                @if(Auth::check())
+                                    <li><a href="{{ url(setting('profile')) }}">{{ __('admin.profile') }}</a></li>
+                                @else
+                                    <li><a href="{{ url('/login') }}">{{ __('home.login') }}</a></li>
+                                @endif
+                                <li>
+                                    <div class="dropdown">
+                                        <a class="dropbtn" href="#">
+                                            {{ __('admin.languages') }}
+                                        </a>
+                                        <div class="dropdown-content">
+                                            <a href="{{ url('lang/ar') }}">{{ __('home.arabic') }}</a>
+                                            <a href="{{ url('lang/en') }}">{{ __('home.english') }}</a>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-4 text-right hidden-lg">
+                        <a href="javascript:void(0)" class="text-white menu-open">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- end main header -->
+
+    <!-- start side menu -->
+    <div class="menu hidden-lg">
+        <div class="container">
+            <div class="row bar bar--sm bar-1">
+                <div class="col-lg-3 col-md-6 col-sm-8 col-8">
+                    <div class="">
+                        <a href="{{ url('/') }}">
+                            <img class="img-fluid" alt="logo" src="{{ getLogo() }}">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-6 col-sm-4 col-4 text-right">
+                    <a href="javascript:void(0)" class="menu-close text-white">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="nav flex-column mt-5 lead text-center">
+                <li class="my-2"><a href="{{ url('/') }}">{{ __('home.home') }}</a></li>
+                <li class="my-2">
+                    <div class="dropdown">
+                        <a class="dropbtn" href="#">
+                            <i class="fa fa-arrow-circle-down"></i>{{ __('home.about_us') }}
+                        </a>
+                        <div class="dropdown-content">
+                            @php
+                                $title = session('lang') . '_title';
+                            @endphp
+                            @foreach($abouts as $about)
+                                <a href=" {{ url(setting('about_us') . '?tab='.$about->$title) }} ">{{ $about->$title }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </li>
+
+                <li class="my-2">
+                    <div class="dropdown">
+                        <a class="dropbtn" href="{{ url(setting('our_services')) }}">
+                            <i class="fa fa-arrow-circle-down"></i> {{ __('home.our_services') }}
+                        </a>
+                        <div class="dropdown-content">
+                            @php
+                                $title = session('lang') . '_title';
+                            @endphp
+                            @foreach($services as $index => $service)
+
+                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}">
+                                    {{ $service->$title }} <i class="fa fa-chevron-circle-right"></i>
+                                </a>
+                                @for($i = 0;$i < count($subCategory); $i++)
+                                    @foreach($subCategory[$i] as $index => $sub)
+                                        @if($index == $service->id)
+                                            @php
+                                                $allValue = explode('-', $sub);
+                                                $id = $allValue[1];
+                                                $name = $allValue[0];
+                                            @endphp
+                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" class="ml-4">
+                                                {{ $name }}
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                @endfor
+                            @endforeach
+                        </div>
+                    </div>
+                </li>
+
+                <li class="my-2"><a href="{{ url(setting('our_projects')) }}">{{ __('home.our_projects') }}</a></li>
+
+                <li class="my-2"><a href="{{ url(setting('blogs')) }}">{{ __('home.blogs') }}</a></li>
+                <li class="my-2"><a href="{{ url(setting('contact_us')) }}">{{ __('admin.contact_us') }}</a></li>
+                <li class="my-2">
+                    <div class="dropdown">
+                        <a class="dropbtn" href="#">
+                            <i class="fa fa-arrow-circle-down"></i> {{ __('admin.languages') }}
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="{{ url('lang/ar') }}">{{ __('home.arabic') }}</a>
+                            <a href="{{ url('lang/en') }}">{{ __('home.english') }}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end side menu -->
+
+    @if(Request::segment(1) == '')
+    <!-- start main banner content-->
+        <div class="container">
+
+            <div class="row align-items-center justify-content-around banner-content" data-aos="fade-up">
+                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-8 text-center banner-line">
+                    @php
+                        $title = session('lang') . '_title';
+                    @endphp
+                    <h1 class="font-weight-bold">
+                        <a href="{{ url('/') }}" class="typewrite text-white" data-period="2000" data-type='[]'>
+                            <span class="wrap">&nbsp;</span>
+                        </a>
+                    </h1>
+                    <p class="lead text-white">
+                    </p>
 
                 </div>
             </div>
         </div>
-    </div>
-    <!-- main header END -->
-</header>
-<!-- header END -->
+    @else
+        <div class="container">
+            <div class="row align-items-center justify-content-around banner-inner-content aos-init aos-animate" data-aos="fade-up">
+                <div class="col-md-8 text-center">
+                    <h1 class="text-white font-weight-bold">
+                        {{ strtoupper(Request::segment(1)) }}
+                    </h1>
+                </div>
+            </div>
+        </div>
+    @endif
+</section>
+<!-- end main banner -->

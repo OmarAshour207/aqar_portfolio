@@ -81,4 +81,9 @@ return [
     'password'              => 'Password',
     'employee'              => 'Employee',
     'customer'              => 'Customer',
+    'clients_reviews'       => 'Clients Reviews',
+    'reviews'               => 'Reviews',
+    'info'                  => 'Information',
+    'data'                  => 'Data',
+    'users_data'            => 'Users Data'
 ];
