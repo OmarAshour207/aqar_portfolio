@@ -8,12 +8,12 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}"><i class="material-icons icon-20pt">home</i> {{ trans('admin.home') }} </a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ trans('admin.blogs') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ trans('admin.clients') }}</li>
                         </ol>
                     </nav>
-                    <h1 class="m-0"> {{ trans('admin.blogs') }} </h1>
+                    <h1 class="m-0"> {{ trans('admin.clients') }} </h1>
                 </div>
-                <a href="{{ route('blogs.create') }}" class="btn btn-success ml-3">{{ trans('admin.create') }} <i class="material-icons">add</i></a>
+                <a href="{{ route('clients.create') }}" class="btn btn-success ml-3">{{ trans('admin.create') }} <i class="material-icons">add</i></a>
             </div>
         </div>
 
@@ -34,20 +34,15 @@
                             </th>
 
                             <th style="width: 30px;" > {{ trans('admin.id') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.ar_author') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.en_author') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.ar_title') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.en_title') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.ar_content') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.en_content') }} </th>
-                            <th style="width: 40px;" > {{ trans('admin.date') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.ar_name') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.en_name') }} </th>
                             <th style="width: 120px;" >{{ trans('admin.image') }}</th>
                             <th style="width: 30px;" > {{ trans('admin.action') }} </th>
                         </tr>
                         </thead>
                         <tbody class="list" id="companies">
-                        @if($blogs->count() > 0)
-                            @foreach($blogs as $index => $blog)
+                        @if($clients->count() > 0)
+                            @foreach($clients as $index => $client)
                         <tr>
                             <td class="text-left">
                                 <div class="custom-control custom-checkbox">
@@ -63,64 +58,27 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ substr($blog->ar_author, 0, 20) }}
+                                        {{ $client->ar_name }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ substr($blog->en_author,0 ,20) }}
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td style="width: 40px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {{ substr($blog->ar_title, 0, 20) }}
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="width: 40px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {{ substr($blog->en_title,0 ,20) }}
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td style="width: 120px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {!! substr($blog->ar_content, 0, 20)  !!}
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="width: 120px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {!! substr($blog->en_content, 0, 20)  !!}
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="width: 40px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        {!! date('d M Y' ,strtotime($blog->created_at))  !!}
+                                        {{ $client->en_name }}
                                     </div>
                                 </div>
                             </td>
 
                             <td style="width:120px" class="text-center">
-                                <img src="{{ $blog->blog_image }}" style="width: 120px; height: 50px">
+                                <img src="{{ $client->client_image }}" style="width: 120px; height: 50px">
                             </td>
 
                             <td>
-                                <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-sm btn-link">
+                                <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-link">
                                     <i class="fa fa-edit fa-2x"></i>
                                 </a>
-                                <form action="{{ route('blogs.destroy', $blog->id) }}" method="post" style="display: inline-block">
+                                <form action="{{ route('clients.destroy', $client->id) }}" method="post" style="display: inline-block">
                                     @csrf
                                     @method('delete')
 
@@ -129,7 +87,7 @@
                             </td>
                         </tr>
                         @endforeach
-                            {{ $blogs->appends(request()->query())->links() }}
+                            {{ $clients->appends(request()->query())->links() }}
                         @else
                             <h1> {{ trans('admin.no_records') }} </h1>
                         @endif

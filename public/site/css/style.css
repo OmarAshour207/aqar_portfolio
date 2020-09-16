@@ -128,6 +128,9 @@ body.menu-opened {
 }
 #menu1 {
     padding-top: 1PX;
+    background: rgb(25 71 136);
+    background: linear-gradient(180deg, rgb(25 71 136) 0%, rgba(247,4,4,0) 100%);
+    
 }
 .fixed-top {
     position: fixed;
@@ -138,6 +141,8 @@ body.menu-opened {
     background: -o-linear-gradient(45deg, #071590 0, #ff003c 100%);
     background: linear-gradient(45deg, #071590 0, #ff003c 100%);
     z-index: 99;
+    background: rgb(25 71 136);
+    background: linear-gradient(180deg, rgb(25 71 136) 0%, rgba(247,4,4,0) 100%);
 }
 .menu-horizontal li a {
     color: #fff !important;
@@ -300,6 +305,7 @@ i.fas.fa-bars {
 .cms-tech .card-2 .card__top {
     border: none;
     background-color: #fff;
+    padding: 18px
 }
 .mt-60 {
     margin-top: 60px;
@@ -1368,7 +1374,8 @@ li.icon-list:hover {
     color: #fff;
 }
 .blog-img img {
-    height: 300px;
+    height: auto;
+    width: 100%;
     object-fit: cover;
 }
 .side-img {
@@ -2216,4 +2223,52 @@ footer img {
         -webkit-transform: scale(1);
         transform: scale(1);
     }
+}
+.h1home{
+    float: right;
+    text-align: center;
+    direction: rtl;
+    margin-top: 142px;
+    color: #ed0242;
+    position: absolute;
+    z-index: 9999999999999999;
+    top: -12%;
+}
+iframe#player {
+    position: absolute;
+    top: 30%;
+}
+.card__top{background-image: url(../images/back2.png)}
+.card__body.pt-0 h4 {
+    color: #194788;}
+ .mySlides::after {
+ content: "";
+    position: absolute;
+    /* background: red; */
+    background-image: url(../images/back.png);
+    background-size: cover;
+    background-repeat: repeat-x;
+        bottom: -179px;
+    /* left: 44px; */
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;}
+.project-thumb.hover-element .hover-element__reveal .project-thumb__title {
+    padding: 1.857143em;
+    z-index: 2;
+    position: relative;
+    top: 38%;
+    color: #fff;
+}
+.project-thumb.hover-element .hover-element__reveal .project-thumb__title h5 {
+    margin: 0;
+    color: red;
+        font-size: 28px;
+}
+    a.page-link {
+    padding: 10px;
+}
+span.page-link {
+    padding: 8px;
 }

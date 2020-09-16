@@ -9,23 +9,16 @@
                 @endphp
                 @foreach($sliders as $index => $slider)
                     <div class="mySlides fade">
-                        <a href="">
                             <img src="{{ $slider->slider_image }}" alt="{{ $slider->$meta_tag }}">
-                        </a>
-                        <!--        <div class="text">Caption Text</div>-->
                     </div>
                 @endforeach
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-
             </div>
 
-
             <style>
-                .mySlides {
-                    clip-path: polygon(50% 0%, 81% 0, 100% 0, 100% 65%, 50% 100%, 0 78%, 0 0, 18% 0);
-                }
+
 
                 .slideshow-container img {
                     vertical-align: middle;
@@ -43,8 +36,7 @@
                 .prev, .next {
                     cursor: pointer;
                     position: absolute;
-                    top: 50%;
-
+                    top: 31%;
                     width: auto;
                     padding: 16px;
                     margin-top: -22px;
@@ -54,9 +46,10 @@
                     transition: 0.6s ease;
                     border-radius: 0 3px 3px 0;
                     user-select: none;
+                    z-index: 8;
                 }
                 .next {
-                    right: 0;
+                    right: 98%;
                     border-radius: 3px 0 0 3px;
                 }
                 .prev:hover, .next:hover {
@@ -130,6 +123,7 @@
                     dots[slideIndex-1].className += " active";
                 }
             </script>
+
         </div>
     @endif
     <!-- start main header -->
@@ -216,7 +210,10 @@
                                 </li>
                                 @if(Auth::check())
                                     <li>
-                                        <a href="{{ url('profile') }}" title="{{ url('profile') }}">
+                                        <a href="{{ url('profile') }}" title="{{ url('profile') }}" style="
+                                            background: red;
+                                            padding: 6px;
+                                            border-radius: 6px;">
                                             {{ __('admin.profile') }}
                                         </a>
                                     </li>
@@ -339,6 +336,23 @@
                         {{ __('admin.contact_us') }}
                     </a>
                 </li>
+                @if(Auth::check())
+                    <li>
+                        <a href="{{ url('profile') }}" title="{{ url('profile') }}" style="
+                                            background: red;
+                                            padding: 6px;
+                                            border-radius: 6px;">
+                            {{ __('admin.profile') }}
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ url('/login') }}" title="{{ url('login') }}">
+                            {{ __('home.login') }}
+                        </a>
+                    </li>
+                @endif
+
                 <li class="my-2">
                     <div class="dropdown">
                         <a class="dropbtn" href="#">
@@ -384,7 +398,7 @@
             <div class="row align-items-center justify-content-around banner-inner-content aos-init aos-animate" data-aos="fade-up">
                 <div class="col-md-8 text-center">
                     <h1 class="text-white font-weight-bold">
-                        {{ strtoupper(Request::segment(1)) }}
+                        {{ strtoupper($pageName) }}
                     </h1>
                 </div>
             </div>

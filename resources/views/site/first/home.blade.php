@@ -17,7 +17,7 @@
                         $desc = session('lang') . '_description';
                     @endphp
                     <p class="text-justify"> {{ $aboutUs->$desc }} </p>
-                    <a class="btn btn--primary type--uppercase" href="{{ url('about') }}" title="{{ setting('about_us') }}">
+                    <a class="btn btn--primary type--uppercase" href="{{ url(setting('about_us')) }}" title="{{ setting('about_us') }}">
                             <span class="btn__text">
                         {{ __('home.learn_more_about_us') }}
                         </span>
@@ -26,17 +26,18 @@
                 <div class="col-lg-1 col-md-1 mt-10 "></div>
                 <div class="col-lg-6 col-md-12 mt-11 ">
                     <div class="row">
-                        <h1 style="
+                        <h1 class="h1home" style="
                                 float: right;
                                 text-align: center;
                                 direction: rtl;
-                                margin-top:142px;
+
                                 color: #ed0242;">
                             {{ __('home.innovative_services') }}
                         </h1>
-                        <iframe id="player" type="text/html" width="640" height="390"
+                        <iframe class="homee" id="player" type="text/html" width="640" height="390"
                                 src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
-                                frameborder="0"></iframe>
+                                frameborder="0">
+                        </iframe>
                     </div>
                 </div>
 
@@ -61,9 +62,9 @@
                         $desc = session('lang') . '_description';
                     @endphp
                     <p class="text-justify"> {{ $aboutUs->$desc }} </p>
-                    <a class="btn btn--primary type--uppercase" href="{{ url('about') }}" title="{{ setting('about_us') }}">
-                            <span class="btn__text">
-                        {{ __('home.learn_more_about_us') }}
+                    <a class="btn btn--primary type--uppercase" href="{{ url(setting('about_us')) }}" title="{{ setting('about_us') }}">
+                        <span class="btn__text">
+                            {{ __('home.learn_more_about_us') }}
                         </span>
                     </a>
                 </div>
@@ -76,19 +77,19 @@
                         @endphp
                         <div class="col-md-6">
                             @foreach($services as $index => $service)
-                            <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}" class="font-weight-normal">
-                                <div class="card card-2 text-center aos-init aos-animate" data-aos="fade-up" data-aos-duration="500">
-                                    <div class="card__top">
-                                        <img alt="Wordpress" src="{{ $service->service_image }}" class="img-fluid mb-3" style="width: 68px;height: 60px;">
+                                <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}" class="font-weight-normal">
+                                    <div class="card card-2 text-center aos-init aos-animate" data-aos="fade-up" data-aos-duration="500">
+                                        <div class="card__top">
+                                            <br>
+                                        </div>
+                                        <div class="card__body pt-0">
+                                            <h4 title="{{ $service->$meta_tag }}">{{ $service->$title }}</h4>
+                                            <p class="mb-0">
+                                                {{ $service->$desc }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="card__body pt-0">
-                                        <h4 title="{{ $service->$meta_tag }}">{{ $service->$title }}</h4>
-                                        <p class="mb-0">
-                                            {{ $service->$desc }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
                                 @if($index == 2)
                                     @break
                                 @endif
@@ -100,7 +101,7 @@
                                     <a href="javascript:void(0)" class="font-weight-normal">
                                         <div class="card card-2 text-center aos-init aos-animate" data-aos="fade-up" data-aos-duration="500">
                                             <div class="card__top">
-                                                <img alt="{{ $service->$meta_tag }}" src="{{ $service->service_image }}" class="img-fluid mb-3" style="width: 68px;height: 60px;">
+                                                <br>
                                             </div>
                                             <div class="card__body pt-0">
                                                 <h4 title="{{ $service->$meta_tag }}">{{ $service->$title }}</h4>
@@ -171,20 +172,19 @@
                 <div class="col-lg-12">
                     <div class="lazy" id="industry_serve2">
                         @php
-                            $title = session('lang') . '_title';
-                            $meta_tag = session('lang') . '_meta_tag';
+                            $name = session('lang') . '_name';
                         @endphp
-                        @foreach($projects as $index => $project)
+                        @foreach($clients as $client)
                             <div class="project-thumb hover-element hover--active" style="border-radius: 14px;">
-                                <a href="javascript:void(0)" title="{{ $project->$meta_tag }}">
+                                <a href="javascript:void(0)" title="{{ $client->$name }}">
                                     <div class="hover-element__initial">
                                         <div class="background-image-holder">
-                                            <img src="{{ $project->project_image }}" data-lazy="{{ $project->project_image }}" alt="{{ $project->$meta_tag }}" />
+                                            <img src="{{ $client->client_image }}" data-lazy="{{ $client->client_image }}" alt="{{ $client->$name }}" />
                                         </div>
                                     </div>
                                     <div class="hover-element__reveal" data-overlay="9">
                                         <div class="project-thumb__title">
-                                            <h5>{{ $project->$title }}</h5>
+                                            <h5>{{ $client->$name }}</h5>
                                         </div>
                                     </div>
                                 </a>

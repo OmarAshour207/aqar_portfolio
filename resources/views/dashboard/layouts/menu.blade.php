@@ -25,6 +25,14 @@
                         <span class="sidebar-menu-text"> {{ __('admin.users') }} </span>
                     </a>
                 </li>
+
+                <li class="sidebar-menu-item">
+                    <a class="sidebar-menu-button" href="{{ route('clients.index') }}">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-user-friends"></i>
+                        <span class="sidebar-menu-text"> {{ __('admin.our_clients') }} </span>
+                    </a>
+                </li>
+
                 <li class="sidebar-menu-item">
                     <a class="sidebar-menu-button" href="{{ route('data.index') }}">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-database"></i>

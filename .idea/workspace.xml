@@ -3,17 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="1257f663-f64a-495c-8f7d-aacfd2c39e22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Service.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site/css/style-ar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/css/style-ar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/site/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/abouts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/abouts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/blogs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/blogs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/about.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/first/blogs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/blogs.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/contact.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/first/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/layouts/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/first/projects.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/projects.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/services.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/services.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/first/single_blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/single_blog.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/single_service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/single_service.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +165,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/backup/htdocs/videos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/site/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -166,6 +176,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\volcano_advanced_portfolio\public\site\images" />
+      <recent name="C:\xampp\htdocs\volcano_advanced_portfolio\resources\views\dashboard\clients" />
       <recent name="C:\xampp\htdocs\volcano_advanced_portfolio\resources\views\dashboard\data" />
       <recent name="C:\xampp\htdocs\volcano_advanced_portfolio\resources\views\dashboard\users" />
     </key>
@@ -188,7 +200,9 @@
       <updated>1599446055444</updated>
       <workItem from="1599446066703" duration="3658000" />
       <workItem from="1599749327649" duration="42704000" />
-      <workItem from="1600088379683" duration="24320000" />
+      <workItem from="1600088379683" duration="24606000" />
+      <workItem from="1600128377892" duration="141000" />
+      <workItem from="1600174900145" duration="14286000" />
     </task>
     <servers />
   </component>
@@ -196,22 +210,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600111031044">
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600177796893">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864@0.0.1536.864" timestamp="1600111031044" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1600112636520">
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864@0.0.1536.864" timestamp="1600177796893" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1600128533699">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1600112636520" />
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1600128533699" />
     <state x="604" y="356" key="NewPhpFileDialog" timestamp="1600104339177">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="604" y="356" key="NewPhpFileDialog/0.0.1536.864@0.0.1536.864" timestamp="1600104339177" />
-    <state x="465" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1599749379663">
+    <state x="465" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1600128383866">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="465" y="256" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1599749379663" />
+    <state x="465" y="256" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1600128383866" />
     <state x="425" y="197" key="run.anything.popup" timestamp="1600107040984">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

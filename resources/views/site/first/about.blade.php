@@ -157,7 +157,7 @@
                     <h2 class="text-white mb-0"> {{ __('home.like_what_see') }} </h2>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <a href="{{ url(setting('contact_us')) }}" title="{{ setting('contact_us') }}" class="btn text-white bottom-link mb-0">{{ __('home.hire_us') }}</a>
+                    <a href="{{ url(setting('contact_us')) }}" title="{{ setting('contact_us') }}" class="btn text-white bottom-link mb-0">{{ __('home.contact_us') }}</a>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\Client;
 use App\Models\Contactus;
 use App\Models\Data;
 use App\Models\Project;
@@ -55,7 +56,7 @@ class HomeController extends Controller
         $abouts = About::limit(6)->get();
         $contactUs = Contactus::first();
         $projects = Project::orderBy('id', 'desc')->limit(12)->get();
-
+        $clients = Client::orderBy('id', 'desc')->limit(12)->get();
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
 
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
@@ -73,7 +74,8 @@ class HomeController extends Controller
                             'aboutUs', 'contactUs', 'projects',
                             'services', 'teamMembers',
                             'testimonials', 'blogs',
-                            'abouts', 'subCategory' , 'header_services'));
+                            'abouts', 'subCategory' ,
+                            'header_services', 'clients'));
     }
 
     public function checkVisitor()
@@ -122,11 +124,13 @@ class HomeController extends Controller
         $projectCount = Project::all()->count();
         $blogCount = Blog::all()->count();
 
+        $pageName = __('home.about_us');
         return view('site.' . $name . '.about',
             compact('abouts', 'projects',
                             'aboutUs', 'services',
                             'subCategory', 'teamCount',
-                            'clientCount', 'projectCount', 'blogCount'));
+                            'clientCount', 'projectCount',
+                            'blogCount', 'pageName'));
     }
 
     public function blogsPage()
@@ -137,10 +141,12 @@ class HomeController extends Controller
         $abouts = About::limit(6)->get();
         $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
+        $pageName = __('home.blogs');
 
         return view('site.' . getThemeName() . '.blogs',
                 compact('blogs', 'services',
-                                'subCategory', 'abouts'));
+                                'subCategory', 'abouts',
+                                'pageName'));
     }
 
     public function showBlog($id, $title)
@@ -150,11 +156,12 @@ class HomeController extends Controller
         $abouts = About::limit(6)->get();
         $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
+        $pageName = __('home.blog_details');
 
         return view('site.' . getThemeName() . '.single_blog',
                 compact('blog', 'services',
                                 'blogs','abouts',
-                                'subCategory'));
+                                'subCategory', 'pageName'));
     }
 
     public function projectsPage()
@@ -165,24 +172,32 @@ class HomeController extends Controller
         $abouts = About::limit(6)->get();
         $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
+        $pageName = __('home.our_projects');
 
         return view('site.' . getThemeName() . '.projects',
                 compact('projects', 'aboutUs',
-                                'services', 'subCategory', 'abouts'));
+                                'services', 'subCategory',
+                                'abouts', 'pageName'));
     }
 
     public function servicesPage()
     {
         $this->checkVisitor();
         $name = getThemeName();
-        $services = Service::orderBy('id', 'desc')->paginate(8);
+        $services = Service::with('parent')
+                ->where('parent_id', '!=' , null)
+                ->orderBy('id', 'desc')
+                ->paginate(8);
+
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
+        $pageName = __('home.our_services');
 
         return view('site.' . $name . '.services',
                 compact('services', 'header_services',
-                                'abouts', 'subCategory'));
+                                'abouts', 'subCategory',
+                                'pageName'));
     }
 
     public function SingleService($id, $title)
@@ -192,10 +207,12 @@ class HomeController extends Controller
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
+        $pageName = __('home.service_details');
+
         return view('site.' . getThemeName() . '.single_service',
                 compact('service', 'services',
                                 'header_services', 'abouts',
-                                'subCategory'));
+                                'subCategory', 'pageName'));
     }
 
     public function contact()
@@ -207,11 +224,13 @@ class HomeController extends Controller
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
+        $pageName = __('home.contact_us');
 
         return view('site.' . getThemeName() . '.contact',
                 compact('contactUs', 'services',
                                 'aboutUs', 'abouts',
-                                'header_services', 'subCategory'));
+                                'header_services', 'subCategory',
+                                'pageName'));
     }
 
     public function profilePage()
@@ -221,10 +240,12 @@ class HomeController extends Controller
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
         $data = Data::where('user_id', auth()->user()->id)->first();
+        $pageName = __('admin.profile');
+
 
         return view('site.first.profile',
                 compact('services', 'abouts',
                                 'header_services', 'subCategory',
-                                'data'));
+                                'data', 'pageName'));
     }
 }

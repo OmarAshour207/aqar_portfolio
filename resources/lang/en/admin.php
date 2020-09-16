@@ -140,6 +140,8 @@ return [
     'ar_data'               => 'Arabic Data',
     'en_data'               => 'English Data',
     'choose_user'           => 'Choose User',
-    'pages'                 => 'Pages'
+    'pages'                 => 'Pages',
+    'clients'               => 'Clients',
+    'our_clients'           => 'Our Clients',
 
 ];

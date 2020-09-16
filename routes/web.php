@@ -48,6 +48,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'is_a
 
     Route::resource('contactus', 'ContactUsController');
 
+    Route::resource('clients', 'ClientController');
+
     Route::get('settings/contact-info', 'ContactInfoController@contactInfo')->name('settings.contact');
     Route::post('settings/contact-info', 'ContactInfoController@store')->name('settings.contact.store');
 

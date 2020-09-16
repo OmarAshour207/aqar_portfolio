@@ -62,8 +62,8 @@
         /* Dropdown Content (Hidden by Default) */
         .dropdown-content {
             display: none;
-            position: absolute;
-            background-color: #E22A6D;
+            position: fixed;
+            background-color: #194788;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -85,7 +85,7 @@
         .dropdown:hover .dropdown-content {display: block;}
 
         /* Change the background color of the dropdown button when the dropdown content is shown */
-        .dropdown:hover .dropbtn {background-color: #E22A6D;}
+        .dropdown:hover .dropbtn {    background-color: #194788;}
     </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->

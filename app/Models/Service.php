@@ -18,6 +18,11 @@ class Service extends Model
         'parent_id'
     ];
 
+    public function parent()
+    {
+        return $this->belongsTo('App\Models\Service', 'parent_id');
+    }
+
     public function getServiceImageAttribute()
     {
         return Storage::url('public/services/' . $this->image);
