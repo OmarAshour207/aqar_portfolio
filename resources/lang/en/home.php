@@ -85,5 +85,7 @@ return [
     'reviews'               => 'Reviews',
     'info'                  => 'Information',
     'data'                  => 'Data',
-    'users_data'            => 'Users Data'
+    'users_data'            => 'Users Data',
+    'project_details'       => 'Project Details',
+    'aqar_store'            => 'Aqar Store',
 ];

@@ -12,6 +12,7 @@ Route::get(setting('our_services'), 'HomeController@servicesPage');
 Route::get('/services/{id}/{title}', 'HomeController@singleService')->name('service.show');
 
 Route::get(setting('our_projects'), 'HomeController@projectsPage');
+Route::get('project/{id}/{title}', 'HomeController@singleProject')->name('project.show');
 
 Route::get(setting('profile'), 'HomeController@profilePage')->middleware('auth');
 

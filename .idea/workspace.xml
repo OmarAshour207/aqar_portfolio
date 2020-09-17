@@ -3,26 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="1257f663-f64a-495c-8f7d-aacfd2c39e22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AboutUsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AboutUsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/About.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/About.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Slider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Slider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site/css/slick.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/css/slick.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site/css/style-ar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/css/style-ar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/js/owl.carousel.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site/js/page/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/js/page/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/site/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/site/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/abouts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/abouts/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/abouts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/abouts/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/slider/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/slider/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/slider/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/slider/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/slider/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/slider/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/site/first/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/first/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/ui/auth-backend/AuthenticatesUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/ui/auth-backend/AuthenticatesUsers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/first/projects.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/projects.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/first/single_service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/first/single_service.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +191,7 @@
       <workItem from="1600174900145" duration="14286000" />
       <workItem from="1600267666819" duration="9325000" />
       <workItem from="1600278327310" duration="4233000" />
-      <workItem from="1600344513032" duration="1880000" />
+      <workItem from="1600344513032" duration="5044000" />
     </task>
     <servers />
   </component>
@@ -224,10 +211,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1600128533699" />
-    <state x="604" y="356" key="NewPhpFileDialog" timestamp="1600104339177">
+    <state x="604" y="356" key="NewPhpFileDialog" timestamp="1600366657380">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="604" y="356" key="NewPhpFileDialog/0.0.1536.864@0.0.1536.864" timestamp="1600104339177" />
+    <state x="604" y="356" key="NewPhpFileDialog/0.0.1536.864@0.0.1536.864" timestamp="1600366657380" />
     <state x="465" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1600344512589">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

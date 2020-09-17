@@ -25,7 +25,7 @@
                             </div>
                             <div class="blog-content">
                                 <h4>
-                                    <a href="#" title="{{ $project->$meta_tag }}">
+                                    <a href="{{ route('project.show', ['id' => $project->id, 'title' => $project->$title]) }}" title="{{ $project->$meta_tag }}">
                                         {{ $project->$title }}
                                     </a>
                                 </h4>

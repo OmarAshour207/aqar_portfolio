@@ -200,7 +200,7 @@ class HomeController extends Controller
                                 'pageName'));
     }
 
-    public function SingleService($id, $title)
+    public function singleService($id, $title)
     {
         $service = Service::FindOrFail($id);
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
@@ -213,6 +213,22 @@ class HomeController extends Controller
                 compact('service', 'services',
                                 'header_services', 'abouts',
                                 'subCategory', 'pageName'));
+    }
+
+    public function singleProject($id, $title)
+    {
+        $project = Project::FindOrFail($id);
+        $services = Service::orderBy('id', 'desc')->limit(6)->get();
+        $abouts = About::limit(6)->get();
+        $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
+        $subCategory = $this->getServices();
+
+        $pageName = __('home.project_details') . ' ' . $title;
+
+        return view('site.' . getThemeName() . '.single_project',
+            compact('project', 'services',
+                'header_services', 'abouts',
+                'subCategory', 'pageName'));
     }
 
     public function contact()

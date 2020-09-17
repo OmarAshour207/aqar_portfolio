@@ -160,7 +160,7 @@
                         @endphp
                         @foreach($projects as $index => $project)
                             <div class="project-thumb hover-element hover--active">
-                                <a href="javascript:void(0)">
+                                <a href="{{ route('project.show', ['id' => $project->id, 'title' => $project->$title]) }}">
                                     <div class="hover-element__initial">
                                         <div class="background-image-holder">
                                             <img src="{{ $project->project_image }}" data-lazy="{{ $project->project_image }}" alt="{{ $project->meta_tag }}" />

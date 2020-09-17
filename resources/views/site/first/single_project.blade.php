@@ -13,13 +13,17 @@
 
                         <div class="main-banner">
                             <div class="slideshow-container">
-                                @php
-                                    $meta_tag = session('lang') . '_meta_tag';
-                                @endphp
+
                                 <div class="mySlides fade">
-                                    <a href=""><img src="{{ $service->service_image }}"  alt="{{ $service->$meta_tag }}" style="height: 500px"></a>
+                                    <a href="#">
+                                        <img src="{{ $project->project_image }}" style="width: 635px;height: 357px">
+                                    </a>
                                     <!--        <div class="text">Caption Text</div>-->
                                 </div>
+
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
 
                             </div>
                             <style>
@@ -144,18 +148,18 @@
                         </div>
                     </div>
                 </div>
+                @php
+                    $title = session('lang') . '_title';
+                    $desc = session('lang') . '_description';
+                @endphp
                 <div class="col-lg-5 col-md-6 col-sm-12">
-                    @php
-                        $title = session('lang') . '_title';
-                        $desc = session('lang') . '_description';
-                    @endphp
-                    <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">{{ __('home.service_details') }}</p>
-                    <h2>{{ $service->$title }}</h2>
-                    <p class="text-justify pr-3">{{ $service->$desc }}</p>
+                    <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">{{ __('home.project_details') }}</p>
+                    <h2>{{ $project->$title }}</h2>
+                    <p class="text-justify pr-3">{{ $project->$desc }}</p>
                 </div>
 
                 <div class="col-lg-2 col-md-1 col-sm-3 col-3">
-                    <h1 class="v-text">mohamed</h1>
+                    <h1 class="v-text">{{ __('home.aqar_store') }}</h1>
                 </div>
             </div>
         </div>
@@ -219,7 +223,6 @@
     </div>
 
     <section>
-
         <div class="container">
             <div class="row counter-bg bottom-content">
                 <div class="col-lg-8 col-md-12">
@@ -233,6 +236,4 @@
     </section>
 
     <!-- end contact us section -->
-
-
 @endsection
