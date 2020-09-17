@@ -35,7 +35,7 @@ h5,
 h6 {
     color: #465064;
     font-weight: 700;
-    /*text-align: right;*/
+    text-align: right;
 }
 p {
     font-size: 16px;
@@ -58,7 +58,7 @@ ul {
      text-align: right;
     margin-left: 0;
     margin-right: 8.3333333333%;
-  
+
 }}
 address.ml-3 {
     direction: rtl;
@@ -152,7 +152,7 @@ body.menu-opened {
     transform: scale(1);
 }
 #menu1 {
-   
+
     padding-top: 1PX;
     background: rgb(25 71 136);
     background: linear-gradient(180deg, rgb(25 71 136) 0%, rgba(247,4,4,0) 100%);
@@ -172,7 +172,6 @@ body.menu-opened {
 .menu-horizontal li a {
     color: #fff !important;
     opacity: 1 !important;
-    text-align: right;
 }
 nav .active {
     background-color: #333;
@@ -758,10 +757,8 @@ i.fas.fa-bars {
 }
 #service-lazy .slick-next,
 .lazy .slick-next {
-     left: -70px !important;
+    left: -70px !important;
     margin: 0 1rem !important;
-    right: auto;
-    
 }
 /*end industry sec*/
 /*start blog sec*/
@@ -1402,8 +1399,7 @@ li.icon-list:hover {
     color: #fff;
 }
 .blog-img img {
-       height: auto;
-    width: 100%;
+    height: 300px;
     object-fit: cover;
 }
 .side-img {
@@ -2189,7 +2185,7 @@ footer img {
     .mt-10 {
         margin-top: 3rem;
     }
-} 
+}
 
 /************14. Preloader************/
 .preloader {
@@ -2252,11 +2248,12 @@ footer img {
         transform: scale(1);
     }
 }
+.card__top{background-image: url(../images/back2.png)}
 .mySlides::after {
  content: "";
     position: absolute;
     /* background: red; */
-    background-image: url(../images/back3.png);
+    background-image: url(../images/back.png);
     background-size: cover;
     background-repeat: repeat-x;
         bottom: -179px;
@@ -2264,43 +2261,4 @@ footer img {
     right: 0px;
     width: 100%;
     height: 100%;
-    z-index: 0;}
-.h1home{
-    float: right;
-    text-align: center;
-    direction: rtl;
-    margin-top: 142px;
-    color: #ed0242;
-    position: absolute;
-    z-index: 9;
-    top: -12%;
-}
-iframe#player {
-    position: absolute;
-    top: 30%;
-}
-.card__top{background-image: url(../images/back2.png)}
-.card__body.pt-0 h4 {
-    color: #194788;
-}
-.project-thumb.hover-element .hover-element__reveal .project-thumb__title {
-    padding: 1.857143em;
-    z-index: 2;
-    position: relative;
-    top: 38%;
-    color: #fff;
-}
-.project-thumb.hover-element .hover-element__reveal .project-thumb__title h5 {
-    margin: 0;
-    color: red;
-        font-size: 28px;
-}
-a.page-link {
-    padding: 10px;
-}
-span.page-link {
-    padding: 8px;
-}
-ul.pagination {
-    display: flex;
-}
+    z-index: 6;}

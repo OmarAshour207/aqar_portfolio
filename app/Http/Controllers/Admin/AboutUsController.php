@@ -34,6 +34,7 @@ class AboutUsController extends Controller
             'en_title'              => 'required|string',
             'ar_description'        => 'required|string|min:10',
             'en_description'        => 'required|string|min:10',
+            'video'                 => 'sometimes|nullable|url'
         ]);
         $data['image'] = $request->image;
 
@@ -54,6 +55,7 @@ class AboutUsController extends Controller
             'en_title'              => 'required|string',
             'ar_description'        => 'required|string|min:10',
             'en_description'        => 'required|string|min:10',
+            'video'                 => 'sometimes|nullable|url'
         ]);
         $data['image'] = $request->image;
 

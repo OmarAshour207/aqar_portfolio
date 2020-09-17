@@ -38,6 +38,7 @@
                             <th style="width: 120px;" > {{ trans('admin.en_title') }} </th>
                             <th style="width: 120px;" > {{ trans('admin.ar_description') }} </th>
                             <th style="width: 120px;" > {{ trans('admin.en_description') }} </th>
+                            <th style="width: 40px;" > {{ trans('admin.status') }} </th>
                             <th style="width: 120px;" >{{ trans('admin.image') }}</th>
                             <th style="width: 30px;" > {{ trans('admin.action') }} </th>
                         </tr>
@@ -82,6 +83,14 @@
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
                                         {{ substr($slider->en_description, 0, 20)  }}
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td style="width: 40px;">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        {{ $slider->status == 2 ? __('admin.video') : __('admin.image') }}
                                     </div>
                                 </div>
                             </td>

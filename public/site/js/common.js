@@ -17,11 +17,11 @@ AOS.init();
 $(window).scroll(function(){
     if ($(window).scrollTop() >= 300) {
         $('.nav-container').addClass('fixed-top');
-        $('body').css('padding-top','80px');
+       
     }
     else {
         $('.nav-container').removeClass('fixed-top');
-        $('body').css('padding-top','0px');
+      
     }
 });
 

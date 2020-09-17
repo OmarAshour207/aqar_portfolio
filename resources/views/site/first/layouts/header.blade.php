@@ -9,11 +9,20 @@
                 @endphp
                 @foreach($sliders as $index => $slider)
                     <div class="mySlides fade">
+                        @if($slider->status == 1)
                             <img src="{{ $slider->slider_image }}" alt="{{ $slider->$meta_tag }}">
+                        @else
+                            <iframe width="420" height="315"
+                                    src="https://www.youtube.com/embed/{{ getYoutubeId($slider->video) }}" allowfullscreen>
+                            </iframe>
+                        @endif
+
                     </div>
                 @endforeach
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                @if($slider->status == 1)
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                @endif
 
             </div>
 

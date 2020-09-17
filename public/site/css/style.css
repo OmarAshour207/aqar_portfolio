@@ -130,7 +130,7 @@ body.menu-opened {
     padding-top: 1PX;
     background: rgb(25 71 136);
     background: linear-gradient(180deg, rgb(25 71 136) 0%, rgba(247,4,4,0) 100%);
-    
+
 }
 .fixed-top {
     position: fixed;
@@ -1340,14 +1340,14 @@ li.icon-list:hover {
     top: 120px;
 }
 .blog-content {
-    width: calc(50% + 50px);
-    float: left;
+    /* width: calc(50% + 50px); */
+    /* float: left; */
     border: solid 1px #e6e6e6;
     padding: 30px;
     background: #fff;
-    position: absolute;
-    right: 15px;
-    z-index: 9;
+    /* position: absolute; */
+    /* right: 15px; */
+    z-index: -1;
     padding-top: 50px;
     border-radius: 20px;
     -webkit-box-shadow: 3px 28px 24px -33px rgba(0, 0, 0, 0.26);
@@ -1374,8 +1374,7 @@ li.icon-list:hover {
     color: #fff;
 }
 .blog-img img {
-    height: auto;
-    width: 100%;
+    height: 300px;
     object-fit: cover;
 }
 .side-img {
@@ -1590,7 +1589,7 @@ footer img {
     width: 30%;
 }
 .back-to-top {
-    background: linear-gradient(135deg, #ff512f 32%, #dd2476 95%);
+    background: linear-gradient(135deg, #204d8c 32%, #0062ee 95%);
     color: #fff !important;
 }
 .back-to-top .ti {
@@ -2161,7 +2160,7 @@ footer img {
     .mt-10 {
         margin-top: 3rem;
     }
-} 
+}
 
 /************14. Preloader************/
 .preloader {
@@ -2233,10 +2232,11 @@ footer img {
     position: absolute;
     z-index: 9999999999999999;
     top: -12%;
+        margin-top: -160px;
 }
 iframe#player {
     position: absolute;
-    top: 30%;
+    top: 0%;
 }
 .card__top{background-image: url(../images/back2.png)}
 .card__body.pt-0 h4 {
@@ -2248,27 +2248,25 @@ iframe#player {
     background-image: url(../images/back.png);
     background-size: cover;
     background-repeat: repeat-x;
-        bottom: -179px;
+        bottom:0px;
     /* left: 44px; */
     right: 0px;
     width: 100%;
-    height: 100%;
-    z-index: 0;}
-.project-thumb.hover-element .hover-element__reveal .project-thumb__title {
-    padding: 1.857143em;
-    z-index: 2;
-    position: relative;
-    top: 38%;
-    color: #fff;
-}
-.project-thumb.hover-element .hover-element__reveal .project-thumb__title h5 {
+       height: 767px;
+    z-index: 6;}
+.slick-dots {
+    position: absolute ;
+    bottom: 364px !important;
+    display: inline-grid !important;;
+    right: 17px;
+    width: 100%;
+    padding: 0px;
     margin: 0;
-    color: red;
-        font-size: 28px;
+    list-style: none;
+    text-align: center;
 }
-    a.page-link {
-    padding: 10px;
-}
-span.page-link {
-    padding: 8px;
+   h4.mb-2.x {
+    border: 1px solid #e7e9ee;
+    padding: 5px;
+       margin-top: 62px;
 }

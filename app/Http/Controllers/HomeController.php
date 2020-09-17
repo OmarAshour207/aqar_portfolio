@@ -63,7 +63,7 @@ class HomeController extends Controller
         $subCategory = $this->getServices();
 
         $teamMembers = TeamMember::orderBy('id', 'desc')->limit(4)->get();
-        $testimonials = Testimonial::orderBy('id', 'desc')->limit(3)->get();
+        $testimonials = Testimonial::orderBy('id', 'desc')->limit(12)->get();
         $blogs = Blog::orderBy('id', 'desc')->limit(3)->get();
         $themeName = getThemeName();
         $sliders = Slider::orderBy('id', 'desc')->limit(3)->get();

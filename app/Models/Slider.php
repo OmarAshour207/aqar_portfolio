@@ -13,6 +13,8 @@ class Slider extends Model
         'ar_description',
         'en_description',
         'image',
+        'status',
+        'video'
     ];
 
     // Attributes

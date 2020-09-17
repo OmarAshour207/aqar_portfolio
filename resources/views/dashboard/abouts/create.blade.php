@@ -109,6 +109,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="video"> {{ trans('admin.about') }} / {{ trans('admin.video') }}</label>
+                        <input id="video" name="video" type="text" class="form-control" placeholder="{{ __('admin.video') }}" value="{{ old('video') }}">
+                    </div>
+
+                    <div class="form-group">
                         <input class="image_name" type="hidden" name="image" value="">
                     </div>
                     <div class="form-group">

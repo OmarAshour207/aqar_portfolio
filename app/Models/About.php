@@ -12,7 +12,8 @@ class About extends Model
         'en_title',
         'ar_description',
         'en_description',
-        'image'
+        'image',
+        'video'
     ];
 
     public function getAboutImageAttribute()

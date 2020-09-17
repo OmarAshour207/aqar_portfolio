@@ -215,6 +215,89 @@ $('#industry_serve2').not('.slick-initialized').slick({
 //    autoplay: true,
     autoplaySpeed: 2000,
       arrows: false,
+//      vertical: true,
+//     rtl: true,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                arrows: false,
+                 slidesToShow: 3,
+            }
+        },
+        {
+            breakpoint: 769,
+            settings: {
+                arrows: false,
+                slidesToShow: 3,
+            }
+        },
+        {
+            breakpoint: 576,
+            settings: {
+                arrows: false,
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 375,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
+$('#industry_serve3').not('.slick').slick({
+    
+    slidesToShow: 1,
+    slidesToScroll: 1,
+   
+    autoplaySpeed: 2000,
+      arrows: true,
+      vertical: true,
+//     rtl: true
+    dots:true,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                arrows: false,
+                 slidesToShow: 1,
+            }
+        },
+        {
+            breakpoint: 769,
+            settings: {
+                arrows: false,
+                slidesToShow: 1,
+            }
+        },
+        {
+            breakpoint: 576,
+            settings: {
+                arrows: false,
+                slidesToShow: 1
+            }
+        },
+        {
+            breakpoint: 375,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
+$('#industry_serve4').not('.slick').slick({
+    
+ 
+  lazyLoad: 'ondemand',
+    slidesToShow: 3,
+    slidesToScroll: 1,
+//    autoplay: true,
+    autoplaySpeed: 2000,
+     arrows: false,
 //     rtl: true,
     responsive: [
         {

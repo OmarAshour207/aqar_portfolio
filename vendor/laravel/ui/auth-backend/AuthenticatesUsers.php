@@ -20,14 +20,16 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
+        session('lang') ?? session()->put('lang', 'ar');
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
         $subCategory = getServices();
+        $pageName = __('home.login');
 
         return view('site.first.login',
                 compact('services', 'abouts',
-                                'header_services', 'subCategory'));
+                                'header_services', 'subCategory', 'pageName'));
     }
 
     /**

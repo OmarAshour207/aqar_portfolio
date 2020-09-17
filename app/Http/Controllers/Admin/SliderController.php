@@ -30,10 +30,12 @@ class SliderController extends Controller
     public function store(Request $request, Slider $slider)
     {
         $data = $request->validate([
-            'ar_title'             => 'required|string',
-            'en_title'             => 'required|string',
-            'ar_description'       => 'required|string|min:10',
-            'en_description'       => 'required|string|min:10',
+            'ar_title'              => 'required|string',
+            'en_title'              => 'required|string',
+            'ar_description'        => 'required|string|min:10',
+            'en_description'        => 'required|string|min:10',
+            'status'                => 'sometimes|nullable|numeric',
+            'video'                 => 'sometimes|nullable|url'
         ]);
         $data['image'] = $request->image;
 
@@ -50,10 +52,12 @@ class SliderController extends Controller
     public function update(Request $request, Slider $slider)
     {
         $data = $request->validate([
-            'ar_title'             => 'required|string',
-            'en_title'             => 'required|string',
-            'ar_description'       => 'required|string|min:10',
-            'en_description'       => 'required|string|min:10',
+            'ar_title'              => 'required|string',
+            'en_title'              => 'required|string',
+            'ar_description'        => 'required|string|min:10',
+            'en_description'        => 'required|string|min:10',
+            'status'                => 'sometimes|nullable|numeric',
+            'video'                 => 'sometimes|nullable|url'
         ]);
         $data['image'] = $request->image;
 

@@ -113,6 +113,20 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="video"> {{ trans('admin.slider') }} / {{ trans('admin.video') }}</label>
+                        <input id="video" name="video" type="url" class="form-control" placeholder="{{ trans('admin.video_link_on_youtube') }}" value="{{ $slider->video }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status"> {{ __('admin.slider') }} / {{ __('admin.choose_between_photo_video') }} </label>
+                        <select class="form-control select2" name="status">
+                            <option value="1" {{ $slider->status == 1 ? 'selected' : '' }}> {{ __('admin.image') }} </option>
+                            <option value="2" {{ $slider->status == 2 ? 'selected' : '' }}> {{ __('admin.video') }} </option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
                         <input class="image_name" type="hidden" name="image" value="{{ $slider->image }}">
                     </div>
                     <div class="form-group">

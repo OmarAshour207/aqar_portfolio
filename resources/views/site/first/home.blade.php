@@ -4,40 +4,55 @@
 
     @include('site.first.layouts.header')
 
+
     <!-- start service section -->
-    <section class="bg--secondary cms-tech pb-0 mt-10">
+    <section class="bg--secondary">
+        <div class="row"><img style="margin-top: 250px;" src="{{ asset('site/images/kos.png') }}"></div>
         <div class="container">
-            <div class="row  mt-5">
-                <div class="col-lg-5 mt-10">
+
+            <div class="row">
+                <div class="col-lg-5">
                     <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">{{ __('admin.services') }}</p>
                     <h1>
-                        {{ __('home.about_us') }}
+                        {{ __('home.innovative_services') }}
                     </h1>
                     @php
                         $desc = session('lang') . '_description';
                     @endphp
-                    <p class="text-justify"> {{ $aboutUs->$desc }} </p>
+                    <p class="text-justify">{{ $aboutUs->$desc }}</p>
                     <a class="btn btn--primary type--uppercase" href="{{ url(setting('about_us')) }}" title="{{ setting('about_us') }}">
-                            <span class="btn__text">
-                        {{ __('home.learn_more_about_us') }}
+                        <span class="btn__text">
+                            {{ __('home.learn_more_about_us') }}
                         </span>
                     </a>
                 </div>
-                <div class="col-lg-1 col-md-1 mt-10 "></div>
-                <div class="col-lg-6 col-md-12 mt-11 ">
+                <div class="col-lg-1 col-md-1 mt-10"><img src="{{ asset('site/images/kos2.png') }}"></div>
+                <div class="col-lg-6 col-md-12">
                     <div class="row">
                         <h1 class="h1home" style="
-                                float: right;
-                                text-align: center;
-                                direction: rtl;
-
-                                color: #ed0242;">
+                                            float: right;
+                                            text-align: center;
+                                            direction: rtl;
+                                            color: #ed0242;">
                             {{ __('home.innovative_services') }}
                         </h1>
-                        <iframe class="homee" id="player" type="text/html" width="640" height="390"
-                                src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
-                                frameborder="0">
-                        </iframe>
+
+                        <div class="lazy" id="industry_serve3">
+                            @foreach($abouts as $index => $about)
+                                <div class="project-thumb hover-element hover--active">
+                                    <a href="javascript:void(0)">
+                                        <div class="hover-element__initial">
+                                            <iframe class="homee" id="player" type="text/html" width="640" height="390"
+                                                    src="https://www.youtube.com/embed/{{ getYoutubeId($about->video) }}"></iframe>
+                                        </div>
+                                    </a>
+                                </div>
+                                @if($index == 2)
+                                    @break
+                                @endif
+                            @endforeach
+                        </div>
+
                     </div>
                 </div>
 
@@ -206,37 +221,39 @@
                     <h2>{{ __('home.reviews') }}</h2>
                 </div>
                 @php
-                    $title = session('lang') . '_title';
+                    $name = session('lang') . '_name';
                     $desc = session('lang') . '_description';
                     $meta_tag = session('lang') . '_meta_tag';
                 @endphp
-                @foreach($testimonials as $index => $testimonial)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="blog-block flex-column">
-                            <div class="blog-img w-100">
-                                @if ($testimonial->status == 1)
-                                    <img src="{{ $testimonial->testimonial_image }}" alt="{{ $testimonial->$meta_tag }}">
-                                @else
-                                    <iframe width="420" height="315"
-                                            src="https://www.youtube.com/embed/{{ getYoutubeId($testimonial->video) }}" allowfullscreen>
-                                    </iframe>
-                                @endif
-                            </div>
-                            <div class="blog-content">
 
-                                <h4 class="mb-2">
-                                    <a href="#" title="{{ $testimonial->$meta_tag }}">
-                                        {{ $testimonial->$title }}
-                                    </a>
-                                </h4>
-                                <p>{{ substr($testimonial->$desc, 0, 70) }}</p>
-                            </div>
+                <div class="col-lg-12">
+                    <div class="lazy" id="industry_serve4">
+                        @foreach($testimonials as $index => $testimonial)
+                        <div class="" style="border-radius: 14px;">
+                            <a href="javascript:void(0)">
+                                <div class="blog-img w-100">
+                                    @if ($testimonial->status == 1)
+                                        <img src="{{ $testimonial->testimonial_image }}" alt="{{ $testimonial->$meta_tag }}" style="height: 355px;border-radius: 14px;">
+                                    @else
+                                        <iframe width="420" height="315"
+                                                src="https://www.youtube.com/embed/{{ getYoutubeId($testimonial->video) }}" allowfullscreen>
+                                        </iframe>
+                                    @endif
+                                </div>
+                                <div class="blog-content">
+
+                                    <p>{{ substr($testimonial->$desc, 0, 70) }}</p>
+                                    <h4 class="mb-2 x">
+                                        <a href="javascript:void(0)" title="{{ $testimonial->$meta_tag }}">
+                                            {{ $testimonial->$name }}
+                                        </a>
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
+                        @endforeach
                     </div>
-                    @if($index == 2)
-                        @break
-                    @endif
-                @endforeach
+                </div>
             </div>
         </div>
     </section>
