@@ -4,162 +4,54 @@
 
     @include('site.first.layouts.header')
 
-<!-- start about section -->
-<section class="about-section pb-0">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7 col-md-5 col-sm-8 col-8">
-                <div class="abt-img">
 
-                    <div class="main-banner">
-                        <div class="slideshow-container">
+    <!-- start service section -->
+    <section class="bg--secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">{{ auth()->user()->name ?? '' }} {{ __('home.info') }}</p>
+                    <h2>
+                        {{ auth()->user()->name ?? '' }}
+                    </h2>
+                    @php
+                        $d = session('lang') . '_data';
+                    @endphp
+                    {!! $data->$d ?? '' !!}
+                </div>
+                <div class="col-lg-7 col-md-12">
+                    <div class="row">
+                        <h1 class="h1home" style="
+                                            float: right;
+                                            text-align: center;
+                                            direction: rtl;
+                                            color: #ed0242;">
+                            {{ __('home.profile_details') }}
+                        </h1>
 
-                            <div class="mySlides fade">
-                                <a href="">
-                                    <img src="{{ $data->data_image ?? '' }}" alt="{{ $data->data_image ?? '' }}" style="width: 635px;height: 357px;"></a>
-                                <!--        <div class="text">Caption Text</div>-->
-                            </div>
-
+                        <div class="lazy" id="industry_serve3">
+                            @php
+                                $imageName = explode('|', $data->image);
+                            @endphp
+                            @for($i = 0; $i < count($imageName);$i++)
+                                @if($imageName[$i] != '')
+                                    <div class="project-thumb hover-element hover--active">
+                                        <div class="hover-element__initial">
+                                            <img src="{{ url('storage/data/' . $imageName[$i]) }}">
+                                        </div>
+                                    </div>
+                                @endif
+                            @endfor
                         </div>
-                        <style>
-                            /*
-                                                .mySlides {
-                                    clip-path: polygon(50% 0%, 81% 0, 100% 0, 100% 65%, 50% 100%, 0 78%, 0 0, 18% 0);
-                                    }
-                            */
-                            .right-sec-content {
-                                background: #1b148a!important;
-                            }
 
-                            .slideshow-container img {
-                                vertical-align: middle;
-                                height: 100%;
-                                object-fit: cover;
-                                width: 100%;
-                            }
-                            .slideshow-container {
-
-                                max-width:100%;
-                                height: 100%;
-                                position: relative;
-                                margin: auto;
-                            }
-                            .prev, .next {
-                                cursor: pointer;
-                                position: absolute;
-                                top: 50%;
-
-                                width: auto;
-                                padding: 16px;
-                                margin-top: -22px;
-                                color: white;
-                                font-weight: bold;
-                                font-size: 18px;
-                                transition: 0.6s ease;
-                                border-radius: 0 3px 3px 0;
-                                user-select: none;
-                            }
-                            .next {
-                                right: 0;
-                                border-radius: 3px 0 0 3px;
-                            }
-                            .prev:hover, .next:hover {
-                                background-color: rgba(0, 0, 0, 0.72);
-                            }
-                            .text {
-                                color: white;
-                                font-size: 110%;
-                                padding: 13px;
-                                position: absolute;
-                                bottom: 0;
-                                width: 100%;
-                                background: rgba(14, 15, 16, 0.67);;
-                                text-align: center;
-                            }
-                            .dot {
-                                cursor: pointer;
-                                height: 3px;
-                                width: 20px;
-                                margin: 0 2px;
-                                background-color: #e1e1e1;
-                                display: inline-block;
-                                transition: background-color 0.6s ease;
-                            }
-                            .active, .dot:hover {
-                                background-color: black;
-                            }
-                            .career .right-sec {
-
-                                height: auto;
-
-                            }
-                            .fade {
-                                -webkit-animation-name: fade;
-                                -webkit-animation-duration: 1.5s;
-                                animation-name: fade;
-                                animation-duration: 1.5s;
-                            }
-                            @-webkit-keyframes fade {
-                                from {opacity: .4}
-                                to {opacity: 1}
-                            }
-                            @keyframes fade {
-                                from {opacity: .4}
-                                to {opacity: 1}
-                            }
-                            @media only screen and (max-width: 300px) {
-                                .prev, .next,.text {font-size: 11px}
-                            }
-                            }
-
-                        </style>
-                        <script>
-                            var slideIndex = 1;
-                            showSlides(slideIndex);
-
-                            function plusSlides(n) {
-                                showSlides(slideIndex += n);
-                            }
-
-                            function currentSlide(n) {
-                                showSlides(slideIndex = n);
-                            }
-
-                            function showSlides(n) {
-                                var i;
-                                var slides = document.getElementsByClassName("mySlides");
-                                var dots = document.getElementsByClassName("dot");
-                                if (n > slides.length) {slideIndex = 1}
-                                if (n < 1) {slideIndex = slides.length}
-                                for (i = 0; i < slides.length; i++) {
-                                    slides[i].style.display = "none";
-                                }
-                                for (i = 0; i < dots.length; i++) {
-                                    dots[i].className = dots[i].className.replace(" active", "");
-                                }
-                                slides[slideIndex-1].style.display = "block";
-                                dots[slideIndex-1].className += " active";
-                            }
-                        </script>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-5 col-md-6 col-sm-12">
-                <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">{{ auth()->user()->name ?? '' }} {{ __('home.info') }}</p>
-                <h2>{{ auth()->user()->name ?? '' }}</h2>
-                @php
-                  $d = session('lang') . '_data';
-                @endphp
-                {!! $data->$d ?? '' !!}
-            </div>
 
-            <div class="col-lg-2 col-md-1 col-sm-3 col-3">
-                <h1 class="v-text">{{ auth()->user()->name ?? '' }}</h1>
             </div>
         </div>
-    </div>
-</section>
-<!-- end about section -->
+    </section>
+    <!-- end service section -->
+
 
     <!-- start business expert section -->
     <div class="container">

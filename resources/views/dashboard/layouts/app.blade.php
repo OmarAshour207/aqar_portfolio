@@ -21,7 +21,7 @@
         <link type="text/css" href="{{ asset('dashboard/css/vendor-flatpickr.rtl.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('dashboard/css/vendor-flatpickr-airbnb.rtl.css') }}" rel="stylesheet">
         <!-- Dropzone -->
-        <link type="text/css" href="{{ asset('dashboard/css/vendor-dropzone.rtl.css')}}" rel="stylesheet">
+{{--        <link type="text/css" href="{{ asset('dashboard/css/vendor-dropzone.rtl.css')}}" rel="stylesheet">--}}
 
     @elseif(session('lang') == 'en')
         <link type="text/css" href="{{ asset('dashboard/css/app.css') }}" rel="stylesheet">
@@ -29,7 +29,7 @@
         <link type="text/css" href="{{ asset('dashboard/css/vendor-material-icons.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('dashboard/css/vendor-flatpickr.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('dashboard/css/vendor-flatpickr-airbnb.css') }}" rel="stylesheet">
-        <link type="text/css" href="{{ asset('dashboard/css/vendor-dropzone.css') }}" rel="stylesheet">
+{{--        <link type="text/css" href="{{ asset('dashboard/css/vendor-dropzone.css') }}" rel="stylesheet">--}}
     @endif
 
 
@@ -93,8 +93,11 @@
 <script src="{{ asset('dashboard/vendor/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ asset('dashboard/js/flatpickr.js') }}"></script>
 
-<script src="{{ asset('dashboard/vendor/dropzone.min.js') }}"></script>
-<script src="{{ asset('dashboard/js/dropzone.js') }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
+
+{{--<script src="{{ asset('dashboard/vendor/dropzone.min.js') }}"></script>--}}
+{{--<script src="{{ asset('dashboard/js/dropzone.js') }}"></script>--}}
 
 <!-- Global Settings -->
 <script src="{{ asset('dashboard/js/settings.js') }}"></script>

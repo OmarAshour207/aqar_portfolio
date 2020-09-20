@@ -14,7 +14,7 @@ Route::get('/services/{id}/{title}', 'HomeController@singleService')->name('serv
 Route::get(setting('our_projects'), 'HomeController@projectsPage');
 Route::get('project/{id}/{title}', 'HomeController@singleProject')->name('project.show');
 
-Route::get(setting('profile'), 'HomeController@profilePage')->middleware('auth');
+Route::get('profile', 'HomeController@profilePage')->middleware('auth');
 
 Route::get(setting('blogs'), 'HomeController@blogsPage');
 Route::get('/blogs/{id}/{title}', 'HomeController@showBlog')->name('blog.show');
@@ -71,9 +71,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'is_a
     Route::post('user/update/password/{id}', 'UserController@updatePassword')->name('update.password');
 
     Route::resource('data', 'DataController');
+    Route::post('data/upload/images', 'ImageController@uploadDataImages')->name('upload.data.images');
+    Route::post('data/remove/image', 'ImageController@removeDataImage')->name('remove.data.image');
 
     Route::post('upload/image', 'ImageController@uploadPhoto')->name('upload.image');
     Route::post('remove/image', 'ImageController@removePhoto')->name('remove.image');
+
 
     Route::get('profile/edit', 'ProfileController@edit')->name('edit.profile');
     Route::post('profile/edit', 'ProfileController@update')->name('update.profile');

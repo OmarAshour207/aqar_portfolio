@@ -74,20 +74,23 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {!! substr($d->ar_data, 0, 70) !!}
+                                        {!! substr($d->ar_data, 0, 20) !!}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {!! substr($d->en_data, 0, 70) !!}
+                                        {!! substr($d->en_data, 0, 20) !!}
                                     </div>
                                 </div>
                             </td>
 
                             <td style="width:120px" class="text-center">
-                                <img src="{{ $d->data_image }}" style="width: 120px; height: 50px">
+                                @php
+                                    $img = explode('|', $d->image)[0] ?? '';
+                                @endphp
+                                <img src="{{ url('storage/data/' . $img) }}" style="width: 120px;"/>
                             </td>
 
                             <td>

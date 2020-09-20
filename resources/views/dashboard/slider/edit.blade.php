@@ -53,16 +53,7 @@
             });
         });
     </script>
-    <style type="text/css">
 
-        .dropzone {
-            width: 200px;
-            height: 90px;
-            min-height: 0px !important;
-            background-color: #1C2260;
-            border: #1C2260;
-        }
-    </style>
 @endpush
 
 @extends('dashboard.layouts.app')
