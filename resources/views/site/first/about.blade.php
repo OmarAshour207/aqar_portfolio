@@ -56,7 +56,11 @@
                         </ul>
                         <ul class="tabs-content">
                             @foreach($abouts as $index => $about)
-                                <li class="">
+                                <li class=" @if(request('tab') == $about->$title)
+                                {{ 'active' }}
+                                @elseif ($index == 0 && request('tab') == '')
+                                {{ 'active' }}
+                                @endif">
                                     <div class="tab__content">
                                         <div class="container">
                                             <div class="row">

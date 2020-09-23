@@ -1,7 +1,5 @@
 @push('admin_scripts')
     <script type="text/javascript">
-        var url = window.location.href;
-        var path = url.split('/')[4];
         Dropzone.autoDiscover = false;
         $(document).ready(function () {
             $('#mainphoto').dropzone({
@@ -15,7 +13,7 @@
                 dictRemoveFile: '<button class="btn btn-danger"> <i class="fa fa-trash center"></i></button>',
                 params: {
                     _token: '{{ csrf_token() }}',
-                    path: path,
+                    path: 'users',
                     width: 165,
                     height: 165
                 },
@@ -29,7 +27,7 @@
                         data: {
                             _token: '{{ csrf_token() }}',
                             image: imageName,
-                            path: path
+                            path: 'users'
                         }
                     });
                     var fmock;
@@ -54,12 +52,9 @@
     </script>
     <style type="text/css">
 
-        .dropzone {
+        #mainphoto {
             width: 200px;
-            height: 90px;
-            min-height: 0px !important;
-            background-color: #1C2260;
-            border: #1C2260;
+            height: 200px;
         }
     </style>
 @endpush
