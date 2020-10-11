@@ -225,7 +225,7 @@
                                             background: red;
                                             padding: 6px;
                                             border-radius: 6px;">
-                                            {{ __('admin.profile') }}
+                                            {{ __('home.your_project') }}
                                         </a>
                                     </li>
                                 @else
@@ -353,7 +353,7 @@
                                             background: red;
                                             padding: 6px;
                                             border-radius: 6px;">
-                            {{ __('admin.profile') }}
+                            {{ __('home.your_project') }}
                         </a>
                     </li>
                 @else

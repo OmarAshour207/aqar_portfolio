@@ -19,7 +19,7 @@
                                     <label>
                                         <i class="fa fa-envelope-open"></i>
                                         <span class="form-group">
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ __('home.email') }}:*">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ __('home.email') }}:*" value="{{ old('email') }}">
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

@@ -93,4 +93,5 @@ return [
     'mail_stamp'            => 'This mail from ',
     'contact_notification'  => 'Contact Notification',
     'from'                  => 'From',
+    'your_project'          => 'Your Project',
 ];

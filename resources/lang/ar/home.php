@@ -106,4 +106,5 @@ return [
     'aqar_store'            => 'عقار ستور',
     'profile_details'       => 'تفاصيل الملف الشخصي',
     'company_head'          => 'رئيس الشركه',
+    'your_project'          => 'تابع مشروعك'
 ];
