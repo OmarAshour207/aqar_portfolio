@@ -41,7 +41,7 @@
                         @php $title = session('lang') . '_title'; @endphp
                     var mock = { name: '{{ $teamMember->$title }}', size: 2};
                     this.emit('addedfile', mock);
-                    this.emit('thumbnail', mock, '{{ $service->teamMember_image }}');
+                    this.emit('thumbnail', mock, '{{ $teamMember->member_image }}');
                     this.emit('complete', mock);
                     $('.dz-progress').remove();
                     @endif
@@ -55,12 +55,9 @@
     </script>
     <style type="text/css">
 
-        .dropzone {
+        #mainphoto {
             width: 200px;
-            height: 90px;
-            min-height: 0px !important;
-            background-color: #1C2260;
-            border: #1C2260;
+            height: 200px;
         }
     </style>
 @endpush

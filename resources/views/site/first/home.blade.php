@@ -18,8 +18,9 @@
                     </h1>
                     @php
                         $desc = session('lang') . '_description';
+                        $name = session('lang') . '_name';
                     @endphp
-                    <p class="text-justify">{{ $aboutUs->$desc }}</p>
+                    <p class="text-justify">{{ $owner->$name }}</p>
                     <a class="btn btn--primary type--uppercase" href="{{ url(setting('about_us')) }}" title="{{ setting('about_us') }}">
                         <span class="btn__text">
                             {{ __('home.learn_more_about_us') }}

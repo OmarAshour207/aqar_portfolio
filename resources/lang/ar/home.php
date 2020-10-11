@@ -105,4 +105,5 @@ return [
     'project_details'       => 'تفاصيل المشروع',
     'aqar_store'            => 'عقار ستور',
     'profile_details'       => 'تفاصيل الملف الشخصي',
+    'company_head'          => 'رئيس الشركه',
 ];

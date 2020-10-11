@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\TeamMember;
 use Illuminate\Http\Request;
+use App\Models\Owner;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
-class TeamMemberController extends Controller
+class OwnerController extends Controller
 {
     public function __construct()
     {
@@ -17,13 +16,13 @@ class TeamMemberController extends Controller
 
     public function index()
     {
-        $teamMembers = TeamMember::paginate(10);
-        return view('dashboard.team-members.index', compact('teamMembers'));
+        $owners = Owner::paginate(10);
+        return view('dashboard.owners.index', compact('owners'));
     }
 
     public function create()
     {
-        return view('dashboard.team-members.create');
+        return view('dashboard.owners.create');
     }
 
     public function store(Request $request)
@@ -40,17 +39,17 @@ class TeamMemberController extends Controller
         ]);
         $data['image'] = $request->image;
 
-        TeamMember::create($data);
+        Owner::create($data);
         session()->flash('success', __('admin.added_successfully'));
-        return redirect()->route('team-members.index');
+        return redirect()->route('owners.index');
     }
 
-    public function edit(TeamMember $teamMember)
+    public function edit(Owner $owner)
     {
-        return view('dashboard.team-members.edit', compact('teamMember'));
+        return view('dashboard.owners.edit', compact('owner'));
     }
 
-    public function update(Request $request, TeamMember $teamMember)
+    public function update(Request $request, Owner $owner)
     {
         $data = $request->validate([
             'ar_name'          => 'required|string',
@@ -64,19 +63,19 @@ class TeamMemberController extends Controller
         ]);
         $data['image'] = $request->image;
 
-        $teamMember->update($data);
+        $owner->update($data);
         session()->flash('success', __('admin.updated_successfully'));
-        return redirect()->route('team-members.index');
+        return redirect()->route('owners.index');
     }
 
-    public function destroy(TeamMember $teamMember)
+    public function destroy(Owner $owner)
     {
-        if($teamMember->image != null) {
-            Storage::disk('local')->delete('public/team-members/' . $teamMember->image);
+        if($owner->image != null) {
+            Storage::disk('local')->delete('public/owners/' . $owner->image);
         }
-        $teamMember->delete();
+        $owner->delete();
         session()->flash('success', __('admin.deleted_successfully'));
-        return redirect()->route('team-members.index');
+        return redirect()->route('owners.index');
     }
 
 }

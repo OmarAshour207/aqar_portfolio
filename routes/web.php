@@ -47,6 +47,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'is_a
 
     Route::resource('team-members', 'TeamMemberController');
 
+    Route::resource('owners', 'OwnerController');
+
     Route::resource('contactus', 'ContactUsController');
 
     Route::resource('clients', 'ClientController');

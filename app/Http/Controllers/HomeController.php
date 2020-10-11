@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Client;
 use App\Models\Contactus;
 use App\Models\Data;
+use App\Models\Owner;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Slider;
@@ -68,14 +69,15 @@ class HomeController extends Controller
         $themeName = getThemeName();
         $sliders = Slider::orderBy('id', 'desc')->limit(3)->get();
 
-
+        $owner = Owner::first();
         return view('site.' . $themeName . '.home',
                     compact('page_filter', 'sliders',
                             'aboutUs', 'contactUs', 'projects',
                             'services', 'teamMembers',
                             'testimonials', 'blogs',
                             'abouts', 'subCategory' ,
-                            'header_services', 'clients'));
+                            'header_services', 'clients',
+                            'owner'));
     }
 
     public function checkVisitor()
@@ -125,12 +127,15 @@ class HomeController extends Controller
         $blogCount = Blog::all()->count();
 
         $pageName = __('home.about_us');
+
+        $owner = Owner::first();
         return view('site.' . $name . '.about',
             compact('abouts', 'projects',
                             'aboutUs', 'services',
                             'subCategory', 'teamCount',
                             'clientCount', 'projectCount',
-                            'blogCount', 'pageName'));
+                            'blogCount', 'pageName',
+                            'owner'));
     }
 
     public function blogsPage()

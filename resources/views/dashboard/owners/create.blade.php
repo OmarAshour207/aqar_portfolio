@@ -16,8 +16,8 @@
                 params: {
                     _token: '{{ csrf_token() }}',
                     path: path,
-                    width: 500,
-                    height: 600
+                    width: 1920,
+                    height: 880
                 },
                 addRemoveLinks: true,
                 removedfile:function (file) {
@@ -65,7 +65,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ trans('admin.create') }}</li>
                         </ol>
                     </nav>
-                    <h1 class="m-0"> {{ trans('admin.team_members') }} </h1>
+                    <h1 class="m-0"> {{ trans('admin.owner') }} </h1>
                 </div>
             </div>
         </div>
@@ -73,43 +73,43 @@
         <div class="container-fluid page__container">
 
             <div class="card card-form__body card-body">
-                <form method="post" action="{{ route('team-members.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('owners.store') }}" enctype="multipart/form-data">
                     @csrf
                     @include('dashboard.partials._errors')
 
                     <div class="form-group">
-                        <label for="ar_name"> {{ trans('admin.team_members') }} / {{ trans('admin.ar_name') }}</label>
+                        <label for="ar_name"> {{ trans('admin.owner') }} / {{ trans('admin.ar_name') }}</label>
                         <input id="ar_name" name="ar_name" type="text" class="form-control" placeholder="{{ __('admin.ar_name') }}" value="{{ old('ar_name') }}">
                     </div>
                     <div class="form-group">
-                        <label for="en_name"> {{ trans('admin.team_members') }} / {{ trans('admin.en_name') }}</label>
+                        <label for="en_name"> {{ trans('admin.owner') }} / {{ trans('admin.en_name') }}</label>
                         <input id="en_name" name="en_name" type="text" class="form-control" placeholder="{{ __('admin.en_name') }}" value="{{ old('en_name') }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="ar_title"> {{ trans('admin.team_members') }} / {{ trans('admin.ar_title') }}</label>
+                        <label for="ar_title"> {{ trans('admin.owner') }} / {{ trans('admin.ar_title') }}</label>
                         <input id="ar_title" name="ar_title" type="text" class="form-control" placeholder="{{ __('admin.ar_title') }}" value="{{ old('ar_title') }}">
                     </div>
                     <div class="form-group">
-                        <label for="en_title"> {{ trans('admin.team_members') }} / {{ trans('admin.en_title') }}</label>
+                        <label for="en_title"> {{ trans('admin.owner') }} / {{ trans('admin.en_title') }}</label>
                         <input id="en_title" name="en_title" type="text" class="form-control" placeholder="{{ __('admin.en_title') }}" value="{{ old('en_title') }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="ar_desc"> {{ trans('admin.team_members') }} / {{ trans('admin.ar_description') }}</label>
-                        <textarea id="ar_desc" name="ar_description" rows="4" class="form-control" placeholder="{{ trans('admin.team_members') }} / {{ trans('admin.ar_description') }}...">{{ old('ar_description') }}</textarea>
+                        <label for="ar_desc"> {{ trans('admin.owner') }} / {{ trans('admin.ar_description') }}</label>
+                        <textarea id="ar_desc" name="ar_description" rows="4" class="form-control" placeholder="{{ trans('admin.owner') }} / {{ trans('admin.ar_description') }}...">{{ old('ar_description') }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="en_desc"> {{ trans('admin.team_members') }} / {{ trans('admin.en_description') }}</label>
-                        <textarea id="en_desc" name="en_description" rows="4" class="form-control" placeholder="{{ trans('admin.team_members') }} / {{ trans('admin.en_description') }}...">{{ old('en_description') }}</textarea>
+                        <label for="en_desc"> {{ trans('admin.owner') }} / {{ trans('admin.en_description') }}</label>
+                        <textarea id="en_desc" name="en_description" rows="4" class="form-control" placeholder="{{ trans('admin.owner') }} / {{ trans('admin.en_description') }}...">{{ old('en_description') }}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="ar_meta_tag"> {{ trans('admin.team_members') }} / {{ trans('admin.ar_meta_tag') }}</label>
+                        <label for="ar_meta_tag"> {{ trans('admin.owner') }} / {{ trans('admin.ar_meta_tag') }}</label>
                         <input id="ar_meta_tag" name="ar_meta_tag" type="text" class="form-control" placeholder="{{ trans('admin.ar_meta_tag') }}" value="{{ old('ar_meta_tag') }}">
                     </div>
                     <div class="form-group">
-                        <label for="en_meta_tag"> {{ trans('admin.team_members') }} / {{ trans('admin.en_meta_tag') }}</label>
+                        <label for="en_meta_tag"> {{ trans('admin.owner') }} / {{ trans('admin.en_meta_tag') }}</label>
                         <input id="en_meta_tag" name="en_meta_tag" type="text" class="form-control" placeholder="{{ trans('admin.en_meta_tag') }}" value="{{ old('en_meta_tag') }}">
                     </div>
 

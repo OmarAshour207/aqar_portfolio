@@ -143,5 +143,7 @@ return [
     'pages'                 => 'Pages',
     'clients'               => 'Clients',
     'our_clients'           => 'Our Clients',
+    'owner'                 => 'Owner',
+    'owners'                => 'Owners',
 
 ];

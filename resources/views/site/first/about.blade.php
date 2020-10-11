@@ -12,18 +12,21 @@
                     <p class="mb-0 text-orange font-weight-bold type--uppercase tiny-title">{{ __('home.about_us') }}</p>
                     @php
                         $title = session('lang') . '_title';
+                        $name = session('lang') . '_name';
                         $desc = session('lang') . '_description';
                     @endphp
-                    <h2 title="{{ $aboutUs->$title }}">{{ $aboutUs->$title }}</h2>
-                    <p class="text-justify pr-3">{{ $aboutUs->$desc }}</p>
+                    <h2 title="{{ $owner->$name }}">{{ __('home.company_head') }}</h2>
+                    <p class="text-justify pr-3">{{ $owner->$desc }}</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-8 col-8">
                     <div class="abt-img">
                         <div class="video-thumb">
-                            <img src="{{ $aboutUs->about_image }}" class="img-fluid mb-0 w-100" alt="{{ $aboutUs->$title }}">
+                            <img src="{{ $owner->owner_image }}" class="img-fluid mb-0 w-100" alt="{{ $owner->$title }}">
                         </div>
                     </div>
                 </div>
+                <h1> {{ $owner->$name }} ({{ $owner->$title }}) </h1>
+
             </div>
         </div>
     </section>

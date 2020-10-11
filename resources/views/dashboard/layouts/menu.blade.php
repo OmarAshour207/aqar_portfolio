@@ -27,6 +27,13 @@
                 </li>
 
                 <li class="sidebar-menu-item">
+                    <a class="sidebar-menu-button" href="{{ route('owners.index') }}">
+                        <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-user-graduate"></i>
+                        <span class="sidebar-menu-text"> {{ __('admin.owners') }} </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-menu-item">
                     <a class="sidebar-menu-button" href="{{ route('clients.index') }}">
                         <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-user-friends"></i>
                         <span class="sidebar-menu-text"> {{ __('admin.our_clients') }} </span>

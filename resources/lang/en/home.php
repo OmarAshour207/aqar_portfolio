@@ -89,4 +89,8 @@ return [
     'project_details'       => 'Project Details',
     'aqar_store'            => 'Aqar Store',
     'profile_details'       => 'Profile Details',
+    'company_head'          => 'Company Head',
+    'mail_stamp'            => 'This mail from ',
+    'contact_notification'  => 'Contact Notification',
+    'from'                  => 'From',
 ];
