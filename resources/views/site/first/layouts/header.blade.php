@@ -212,11 +212,13 @@
                                         {{ __('home.blogs') }}
                                     </a>
                                 </li>
+
                                 <li>
                                     <a href="{{ url(setting('contact_us')) }}" title="{{ setting('contact_us') }}">
                                         {{ __('admin.contact_us') }}
                                     </a>
                                 </li>
+
                                 @if(Auth::check())
                                     <li>
                                         <a href="{{ url('profile') }}" title="{{ url('profile') }}" style="
@@ -233,21 +235,21 @@
                                         </a>
                                     </li>
                                 @endif
-                                <li>
-                                    <div class="dropdown">
-                                        <a class="dropbtn" href="#">
-                                            {{ __('admin.languages') }}
+
+                                @if(session('lang') == 'ar')
+                                    <li class="mr-2">
+                                        <a href="{{ url('lang/en') }}" title="{{ __('home.english') }}">
+                                            {{ __('home.english') }}
                                         </a>
-                                        <div class="dropdown-content">
-                                            <a href="{{ url('lang/ar') }}" title="{{ url('lang/ar') }}">
-                                                {{ __('home.arabic') }}
-                                            </a>
-                                            <a href="{{ url('lang/en') }}" title="{{ url('lang/en') }}">
-                                                {{ __('home.english') }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                    @else
+                                    <li  class="mr-2">
+                                        <a href="{{ url('lang/ar') }}" title="{{ __('home.arabic') }}">
+                                            {{ __('home.arabic') }}
+                                        </a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>
