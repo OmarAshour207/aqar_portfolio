@@ -239,7 +239,7 @@
                                 @if(session('lang') == 'ar')
                                     <li class="mr-2">
                                         <a href="{{ url('lang/en') }}" title="{{ __('home.english') }}">
-                                            {{ __('home.english') }}
+                                            En
                                         </a>
                                     </li>
                                     @else
@@ -364,21 +364,20 @@
                     </li>
                 @endif
 
-                <li class="my-2">
-                    <div class="dropdown">
-                        <a class="dropbtn" href="#">
-                            <i class="fa fa-arrow-circle-down"></i> {{ __('admin.languages') }}
+                @if(session('lang') == 'ar')
+                    <li class="my-2">
+                        <a href="{{ url('lang/en') }}" title="{{ __('home.english') }}">
+                            En
                         </a>
-                        <div class="dropdown-content">
-                            <a href="{{ url('lang/ar') }}" title="{{ __('home.arabic') }}">
-                                {{ __('home.arabic') }}
-                            </a>
-                            <a href="{{ url('lang/en') }}" title="{{ __('home.english') }}">
-                                {{ __('home.english') }}
-                            </a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @else
+                    <li  class="my-2">
+                        <a href="{{ url('lang/ar') }}" title="{{ __('home.arabic') }}">
+                            {{ __('home.arabic') }}
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </div>
     </div>
