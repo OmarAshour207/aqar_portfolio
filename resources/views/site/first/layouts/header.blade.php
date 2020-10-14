@@ -151,20 +151,11 @@
                         <div class="bar__module">
                             <ul class="menu-horizontal text-left">
                                 <li><a href="{{ url('/') }}" title="{{ __('home.home') }}">{{ __('home.home') }}</a></li>
+
                                 <li>
-                                    <div class="dropdown">
-                                        <a class="dropbtn" href="#" title="{{ setting('about_us') }}">
-                                            {{ __('home.about_us') }}
-                                        </a>
-                                        <div class="dropdown-content">
-                                            @php
-                                                $title = session('lang') . '_title';
-                                            @endphp
-                                            @foreach($abouts as $about)
-                                                <a href="{{ url(setting('about_us') . '?tab=' . $about->$title) }}" title="{{ setting('about_us') }}">{{ $about->$title }}</a>
-                                            @endforeach
-                                        </div>
-                                    </div>
+                                    <a href="{{ url(setting('about_us')) }}" title="{{ setting('about_us') }}">
+                                        {{ __('home.about_us') }}
+                                    </a>
                                 </li>
 
                                 <li>
@@ -282,23 +273,14 @@
                 </div>
             </div>
             <ul class="nav flex-column mt-5 lead text-center">
-                <li class="my-2"><a href="{{ url('/') }}" title="{{ setting('website_title') }}">{{ __('home.home') }}</a></li>
                 <li class="my-2">
-                    <div class="dropdown">
-                        <a class="dropbtn" href="#" title="{{ url(setting('about_us')) }}">
-                            <i class="fa fa-arrow-circle-down"></i>{{ __('home.about_us') }}
-                        </a>
-                        <div class="dropdown-content">
-                            @php
-                                $title = session('lang') . '_title';
-                            @endphp
-                            @foreach($abouts as $about)
-                                <a href="{{ url(setting('about_us') . '?tab='.$about->$title) }}" title="{{ url(setting('about_us') . '?tab='.$about->$title) }}">
-                                    {{ $about->$title }}
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
+                    <a href="{{ url('/') }}" title="{{ setting('website_title') }}">{{ __('home.home') }}</a>
+                </li>
+
+                <li class="my-2">
+                    <a href="{{ url(setting('about_us')) }}" title="{{ setting('about_us') }}">
+                        {{ __('home.about_us') }}
+                    </a>
                 </li>
 
                 <li class="my-2">
