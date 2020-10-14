@@ -31,6 +31,8 @@ class SettingController extends Controller
             $pageFilter = serialize($request->filter_page);
             $websiteSetting->page_filter = $pageFilter;
         }
+        $websiteSetting->ar_description = $request->ar_description;
+        $websiteSetting->en_description = $request->en_description;
         $websiteSetting->save();
 
         session()->flash('success', __('admin.added_successfully'));
@@ -54,6 +56,9 @@ class SettingController extends Controller
             $websiteSetting->page_filter = $pageFilter;
         }
         $websiteSetting->color = $request->color;
+        $websiteSetting->ar_description = $request->ar_description;
+        $websiteSetting->en_description = $request->en_description;
+
         $websiteSetting->update();
         session()->flash('success', __('admin.updated_successfully'));
         return redirect()->route('website-settings.index');

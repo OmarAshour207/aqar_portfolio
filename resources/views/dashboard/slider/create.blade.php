@@ -99,7 +99,7 @@
 
                     <div class="form-group">
                         <label for="video"> {{ trans('admin.slider') }} / {{ trans('admin.video') }}</label>
-                        <input id="video" name="video" type="url" class="form-control" placeholder="{{ trans('admin.video_link_on_youtube') }}" value="{{ old('video') }}">
+                        <input id="video" name="video" type="file" class="form-control">
                     </div>
 
                     <div class="form-group">

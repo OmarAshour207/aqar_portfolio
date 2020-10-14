@@ -33,16 +33,16 @@
                                 </div>
                             </th>
 
-                            <th style="width: 30px;" > {{ trans('admin.id') }} </th>
+                            <th style="width: 30px;"> {{ trans('admin.id') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.ar_name') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.en_name') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.ar_title') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.en_title') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.ar_description') }} </th>
-                            <th style="width: 120px;" > {{ trans('admin.en_description') }} </th>
-                            <th style="width: 40px;" > {{ trans('admin.status') }} </th>
-                            <th style="width: 120px;" >{{ trans('admin.image') }}</th>
-                            <th style="width: 30px;" > {{ trans('admin.action') }} </th>
+                            <th style="width: 120px;"> {{ trans('admin.ar_description') }} </th>
+                            <th style="width: 120px;"> {{ trans('admin.en_description') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.status') }} </th>
+                            <th style="width: 120px;"> {{ trans('admin.image') }}</th>
+                            <th style="width: 30px;"> {{ trans('admin.action') }} </th>
                         </tr>
                         </thead>
                         <tbody class="list" id="companies">
@@ -92,14 +92,14 @@
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ substr($testimonial->ar_description, 0, 20) }}
+                                        {{ substr($testimonial->ar_description, 0, 30) }}
                                     </div>
                                 </div>
                             </td>
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ substr($testimonial->en_description, 0, 20) }}
+                                        {{ substr($testimonial->en_description, 0, 30) }}
                                     </div>
                                 </div>
                             </td>

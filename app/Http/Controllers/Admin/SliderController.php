@@ -35,9 +35,16 @@ class SliderController extends Controller
             'ar_description'        => 'required|string|min:10',
             'en_description'        => 'required|string|min:10',
             'status'                => 'sometimes|nullable|numeric',
-            'video'                 => 'sometimes|nullable|url'
+            'video'                 => 'sometimes|nullable'
         ]);
         $data['image'] = $request->image;
+
+        if ($request->has('video')) {
+            $file = $request->file('video');
+            $path = 'public/slider/';
+            Storage::disk('local')->putFileAs($path, $file, (string)$file->getClientOriginalName());
+            $data['video'] = $file->getClientOriginalName();
+        }
 
         Slider::create($data);
         session()->flash('success', trans('admin.added_successfully'));
@@ -61,6 +68,14 @@ class SliderController extends Controller
         ]);
         $data['image'] = $request->image;
 
+        if ($request->has('video')) {
+            Storage::disk('local')->delete('public/slider/' . $slider->video);
+            $file = $request->file('video');
+            $path = 'public/slider/';
+            Storage::disk('local')->putFileAs($path, $file, (string)$file->getClientOriginalName());
+            $data['video'] = $file->getClientOriginalName();
+        }
+
         $slider->update($data);
         session()->flash('success', trans('admin.added_successfully'));
         return redirect()->route('slider.index');
@@ -69,7 +84,10 @@ class SliderController extends Controller
     public function destroy(Slider $slider)
     {
         if($slider->image){
-            Storage::disk('local')->delete('public/sliders/'. $slider->image);
+            Storage::disk('local')->delete('public/slider/'. $slider->image);
+        }
+        if ($slider->video) {
+            Storage::disk('local')->delete('public/slider/' . $slider->video);
         }
         $slider->delete();
         session()->flash('success', trans('admin.deleted_successfully'));

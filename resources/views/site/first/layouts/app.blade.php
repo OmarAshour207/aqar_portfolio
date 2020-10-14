@@ -88,6 +88,38 @@
         .dropdown:hover .dropbtn {    background-color: #194788;}
     </style>
 
+    <style>
+        /* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
+        .icon-bar {
+            position: fixed;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        /* Style the icon bar links */
+        .icon-bar a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Style the social media icons with color, if you want */
+        .icon-bar a:hover {
+            background-color: #000;
+        }
+
+        .whatsapp {
+            background: #46a049 ;
+            color: white;
+        }
+
+    </style>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ setting('google_analytics') }}"></script>
     <script>
@@ -113,6 +145,7 @@
 
 <div class="main-container">
 
+
     @yield('content')
 
     @include('site.first.layouts.footer')
@@ -121,6 +154,10 @@
     <a class="back-to-top inner-link" href="#" data-scroll-class="100vh:active">
         <i class="ti-arrow-up"></i>
     </a>
+
+        <div class="icon-bar">
+            <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        </div>
 
 </div>
 

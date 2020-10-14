@@ -77,7 +77,7 @@ class HomeController extends Controller
                             'testimonials', 'blogs',
                             'abouts', 'subCategory' ,
                             'header_services', 'clients',
-                            'owner'));
+                            'owner', 'websiteSettings'));
     }
 
     public function checkVisitor()

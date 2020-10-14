@@ -41,7 +41,7 @@
                 <h3>{{ __('home.follow_us') }}</h3>
                 <ul class="social-nav">
                     @php
-                        $socialSites = ['facebook', 'twitter', 'instagram'];
+                        $socialSites = ['facebook', 'twitter', 'instagram', 'linkedin', 'youtube'];
                     @endphp
                     @for($i = 0; $i < count($socialSites); $i++)
                         @if(setting($socialSites[$i]) != '')

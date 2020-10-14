@@ -35,7 +35,7 @@
                         <label for="filter_page">{{ __('admin.visible') }} {{ __('admin.website_sections') }} </label><br>
                         <select id="filter_page" data-toggle="select" name="filter_page[]" class="form-control" multiple>
                             @php
-                            $sections= ['about', 'our_projects', 'contacts','our_services', 'stat', 'team_members', 'testimonials', 'latest_blog'];
+                            $sections= ['about', 'our_projects', 'our_services', 'testimonials', 'latest_blog'];
                             @endphp
                             {{-- Sections --}}
                             @for($i = 0; $i < count($sections); $i++)
@@ -69,6 +69,16 @@
                                 <option value="{{ $index }}" {{ $index == $websiteSettings->color ? 'selected' : '' }}> {{ $color }} </option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ar_description">{{ __('admin.settings_website') }} {{ __('admin.ar_description') }} </label>
+                        <textarea cols="10" rows="5" class="form-control" name="ar_description" id="ar_description">{{ $websiteSettings->ar_description }}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="en_description">{{ __('admin.settings_website') }} {{ __('admin.en_description') }} </label>
+                        <textarea cols="10" rows="5" class="form-control" name="en_description" id="en_description">{{ $websiteSettings->en_description }}</textarea>
                     </div>
 
 

@@ -5,7 +5,7 @@
         Dropzone.autoDiscover = false;
         $(document).ready(function () {
             $('#mainphoto').dropzone({
-                url: '{{ route('upload.image') }}',
+                url: '{{ route('client.image') }}',
                 paramName:'image',
                 autoDiscover: false,
                 uploadMultiple: false,
@@ -49,7 +49,6 @@
             width: 200px;
             height: 90px;
             min-height: 0px !important;
-            background-color: #1C2260;
             border: #1C2260;
         }
     </style>

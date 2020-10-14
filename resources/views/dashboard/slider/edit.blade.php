@@ -105,8 +105,14 @@
 
                     <div class="form-group">
                         <label for="video"> {{ trans('admin.slider') }} / {{ trans('admin.video') }}</label>
-                        <input id="video" name="video" type="url" class="form-control" placeholder="{{ trans('admin.video_link_on_youtube') }}" value="{{ $slider->video }}">
+                        <input id="video" name="video" type="file" class="form-control">
                     </div>
+
+                    @if($slider->video)
+                        <video autoplay muted loop id="myVideo" style="width: 700px;height: 200px;">
+                            <source src="{{ \Storage::url('public/slider/' . $slider->video) }}" type="video/mp4">
+                        </video>
+                    @endif
 
                     <div class="form-group">
                         <label for="status"> {{ __('admin.slider') }} / {{ __('admin.choose_between_photo_video') }} </label>

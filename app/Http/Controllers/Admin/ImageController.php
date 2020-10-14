@@ -51,4 +51,15 @@ class ImageController extends Controller
             'original_name' => $request->file->getClientOriginalName()
         ]);
     }
+
+    public function uploadClientImage(Request $request)
+    {
+        $file_tmp =$_FILES['image']['tmp_name'];
+        $imageName = Image::make($request->image)
+            ->resize($request->width, $request->height)->encode('png');
+
+        Storage::disk('local')->put('public/' . $request->path .'/'. $request->image->hashName(), (string) $imageName, 'public');
+//        move_uploaded_file($file_tmp,'public/' . $request->path . '/' . $request->image->hashName());
+        return $request->image->hashName();
+    }
 }

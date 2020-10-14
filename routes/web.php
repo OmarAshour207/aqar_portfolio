@@ -93,4 +93,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'is_a
 
     Route::get('clear/notifications', 'NotificationController@clearAll')->name('clear.notifications');
     Route::get('view/notifications', 'NotificationController@viewAll')->name('view.notifications');
+
+    Route::post('client/image','ImageController@uploadClientImage')->name('client.image');
 });

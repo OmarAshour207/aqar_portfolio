@@ -12,9 +12,9 @@
                         @if($slider->status == 1)
                             <img src="{{ $slider->slider_image }}" alt="{{ $slider->$meta_tag }}">
                         @else
-                            <iframe width="420" height="315"
-                                    src="https://www.youtube.com/embed/{{ getYoutubeId($slider->video) }}" allowfullscreen>
-                            </iframe>
+                            <video autoplay muted loop id="myVideo" style="width: 100%;height: 855px;">
+                                <source src="{{ \Storage::url('public/slider/' . $slider->video) }}" type="video/mp4">
+                            </video>
                         @endif
 
                     </div>

@@ -44,7 +44,7 @@
                     </div>
 
                     @php
-                        $socialSites = ['facebook', 'instagram', 'twitter'];
+                        $socialSites = ['facebook', 'instagram', 'twitter', 'linkedin', 'youtube'];
                     @endphp
 
                     @foreach($socialSites as $socialSite)

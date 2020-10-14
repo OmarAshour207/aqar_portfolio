@@ -145,5 +145,7 @@ return [
     'our_clients'           => 'Our Clients',
     'owner'                 => 'Owner',
     'owners'                => 'Owners',
+    'linkedin'              => 'Linkedin',
+    'youtube'               => 'Youtube',
 
 ];

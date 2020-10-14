@@ -13,7 +13,6 @@
                     </nav>
                     <h1 class="m-0"> {{ trans('admin.settings_website') }} </h1>
                 </div>
-                <a href="{{ route('website-settings.create') }}" class="btn btn-success ml-3">{{ trans('admin.create') }} <i class="material-icons">add</i></a>
             </div>
         </div>
 
@@ -33,17 +32,15 @@
                                 </div>
                             </th>
 
-                            <th style="width: 30px;" > {{ trans('admin.id') }} </th>
+                            <th style="width: 30px;"> {{ trans('admin.id') }} </th>
                             <th style="width: 40px;"> {{ trans('admin.about') }} </th>
                             <th style="width: 40px;"> {{ trans('home.our_projects') }} </th>
-                            <th style="width: 40px;"> {{ trans('admin.contacts') }} </th>
-                            <th style="width: 120px;" > {{ trans('home.our_services') }} </th>
-                            <th style="width: 120px;" > {{ trans('home.stat') }} </th>
-                            <th style="width: 30px;" > {{ trans('admin.team_members') }} </th>
-                            <th style="width: 120px;" >{{ trans('admin.testimonials') }}</th>
-                            <th style="width: 30px;" > {{ trans('home.latest_blog') }} </th>
-                            <th style="width: 30px;" > {{ trans('admin.color') }} </th>
-                            <th style="width: 30px;" > {{ trans('admin.action') }} </th>
+                            <th style="width: 120px;"> {{ trans('home.our_services') }} </th>
+                            <th style="width: 120px;"> {{ trans('admin.testimonials') }}</th>
+                            <th style="width: 30px;"> {{ trans('home.latest_blog') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.ar_description') }} </th>
+                            <th style="width: 40px;"> {{ trans('admin.en_description') }} </th>
+                            <th style="width: 30px;"> {{ trans('admin.action') }} </th>
                         </tr>
                         </thead>
                         <tbody class="list" id="companies">
@@ -60,7 +57,7 @@
                                     </td>
 
                                     @php
-                                    $sections = ['about', 'our_projects', 'contacts','our_services', 'stat', 'team_members', 'testimonials', 'latest_blog'];
+                                    $sections = ['about', 'our_projects','our_services', 'testimonials', 'latest_blog'];
                                     $pageFilter = unserialize($websiteSettings->page_filter);
                                     @endphp
                                     @for($i = 0;$i < count($sections);$i++)
@@ -83,26 +80,19 @@
                                         @endif
                                     @endfor
 
+                                    <td style="width: 40px;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                {{ substr($websiteSettings->ar_description, 0, 30) }}
+                                            </div>
+                                        </div>
+                                    </td>
 
-                                    @php
-                                        $colors = [
-                                            1     => 'Orange',
-                                            2     => 'Red',
-                                            3     => 'Yellow',
-                                            4     => 'Blue',
-                                            5     => 'Red Dark',
-                                            6     => 'Green',
-                                            7     => 'Sky',
-                                            8     => 'Orange Dark',
-                                            ];
-                                    @endphp
-                                    <td style="width: 30px;">
-                                        <div class="badge badge-soft-dark">
-                                            @foreach($colors as $index => $color)
-                                                @if ($index == $websiteSettings->color)
-                                                    {{ $color }}
-                                                @endif
-                                            @endforeach
+                                    <td style="width: 40px;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                {{ substr($websiteSettings->en_description, 0, 30) }}
+                                            </div>
                                         </div>
                                     </td>
 

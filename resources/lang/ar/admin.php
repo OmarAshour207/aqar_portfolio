@@ -148,5 +148,6 @@ return [
     'our_clients'           => 'عملائنا',
     'owner'                 => 'المالك',
     'owners'                => 'ملاك الشركه',
-
+    'linkedin'              => 'لينكدان',
+    'youtube'               => 'يوتيوب',
 ];
