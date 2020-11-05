@@ -50,5 +50,9 @@ function getServices()
 function getYoutubeId($url)
 {
     parse_str(parse_url($url, PHP_URL_QUERY), $result);
-    return $result['v'];
+    if (isset($result['v'])) {
+        return $result['v'];
+    }
+    $request = parse_url($url);
+    return $request['path'];
 }

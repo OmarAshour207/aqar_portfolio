@@ -118,7 +118,7 @@ class HomeController extends Controller
         $name = getThemeName();
         $projects = Project::orderBy('id', 'desc')->limit(6)->get();
 
-        $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
+        $services = Service::orderBy('id', 'desc')->limit(6)->get();
         $subCategory = $this->getServices();
 
         $teamCount = TeamMember::all()->count();
@@ -269,4 +269,5 @@ class HomeController extends Controller
                                 'header_services', 'subCategory',
                                 'data', 'pageName'));
     }
+
 }
