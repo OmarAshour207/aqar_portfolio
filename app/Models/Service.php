@@ -23,6 +23,11 @@ class Service extends Model
         return $this->belongsTo('App\Models\Service', 'parent_id');
     }
 
+    public function childs()
+    {
+        return $this->hasMany('App\Models\Service', 'parent_id');
+    }
+
     public function getServiceImageAttribute()
     {
         return Storage::url('public/services/' . $this->image);

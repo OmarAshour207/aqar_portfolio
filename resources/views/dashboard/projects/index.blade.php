@@ -59,7 +59,7 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $project->ar_title }}
+                                        {{ mb_substr($project->ar_title, 0, 20) }}
                                     </div>
                                 </div>
                             </td>
@@ -67,7 +67,7 @@
                             <td style="width: 40px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ $project->en_title }}
+                                        {{ substr($project->en_title, 0, 20) }}
                                     </div>
                                 </div>
                             </td>
@@ -75,7 +75,7 @@
                             <td style="width: 120px;">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{ substr($project->ar_description, 0, 20) }}
+                                        {{ mb_substr($project->ar_description, 0, 20) }}
                                     </div>
                                 </div>
                             </td>
@@ -88,7 +88,10 @@
                             </td>
 
                             <td style="width:120px" class="text-center">
-                                <img src="{{ $project->project_image }}" style="width: 120px; height: 50px">
+                                @php
+                                    $img = explode('|', $project->image)[0] ?? '';
+                                @endphp
+                                <img src="{{ url('storage/projects/' . $img) }}" style="width: 120px; height: 50px">
                             </td>
 
                             <td>

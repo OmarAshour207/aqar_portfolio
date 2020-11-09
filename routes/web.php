@@ -36,6 +36,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'is_a
     Route::resource('services', 'ServiceController');
 
     Route::resource('projects', 'ProjectController');
+    Route::post('project/upload/images', 'ProjectController@uploadProjectImages')->name('upload.project.images');
+    Route::post('project/remove/image', 'ProjectController@removeProjectImage')->name('remove.project.image');
 
     Route::resource('contacts', 'ContactController');
 

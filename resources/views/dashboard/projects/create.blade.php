@@ -1,58 +1,56 @@
 @push('admin_scripts')
     <script type="text/javascript">
-        var url = window.location.href;
-        var path = url.split('/')[4];
-        Dropzone.autoDiscover = false;
-        $(document).ready(function () {
-            $('#mainphoto').dropzone({
-                url: '{{ route('upload.image') }}',
-                paramName:'image',
-                autoDiscover: false,
-                uploadMultiple: false,
-                maxFiles: 1,
-                acceptedFiles: 'image/*',
-                dictDefaultMessage: '{{ __('admin.upload_photo') }}',
-                dictRemoveFile: '<button class="btn btn-danger"> <i class="fa fa-trash center"></i></button>',
-                params: {
-                    _token: '{{ csrf_token() }}',
-                    path: path,
-                    width: 500,
-                    height: 600
-                },
-                addRemoveLinks: true,
-                removedfile:function (file) {
-                    var imageName = $('.image_name').val();
-                    $.ajax({
-                        dataType: 'json',
-                        type: 'POST',
-                        url: '{{ route('remove.image') }}',
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            image: imageName,
-                            path: path
-                        }
-                    });
-                    var fmock;
-                    return (fmock = file.previewElement) != null ? fmock.parentNode.removeChild(file.previewElement): void 0;
-                },
-                init: function () {
-                    this.on("success", function (file, image) {
-                        $('.image_name').val(image);
-                    })
+        var uploadedDocumentMap = {}
+        Dropzone.options.documentDropzone = {
+            url: '{{ route('upload.project.images') }}',
+            maxFilesize: 2, // MB
+            maxFiles:5,
+            dictDefaultMessage: '{{ __('admin.upload_photo') }}',
+            addRemoveLinks: true,
+            params: {
+                _token: '{{ csrf_token() }}',
+                width: 1920,
+                height: 1080
+            },
+            success: function (file, response) {
+                $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+                uploadedDocumentMap[file.name] = response.name
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else {
+                    name = uploadedDocumentMap[file.name]
                 }
-            });
-        });
-    </script>
-    <style type="text/css">
-
-        .dropzone {
-            width: 200px;
-            height: 90px;
-            min-height: 0px !important;
-            background-color: #1C2260;
-            border: #1C2260;
+                $.ajax({
+                    dataType:'json',
+                    type:'post',
+                    url: '{{ route('remove.project.image') }}',
+                    data:{
+                        _token: '{{ csrf_token() }}',
+                        id: name,
+                    }
+                });
+                $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+            },
+            init: function () {
+                @if(isset($project) && $project->image)
+                var files =
+                {!! json_encode($project->image) !!}
+                    for (var i in files) {
+                    var file = files[i]
+                    this.options.addedfile.call(this, file)
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="document[]" value="' + file.file_name + '">')
+                }
+                @endif
+            }
         }
-    </style>
+
+    </script>
+
 @endpush
 
 @extends('dashboard.layouts.app')
@@ -108,11 +106,9 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="image_name" type="hidden" name="image" value="">
-                    </div>
-                    <div class="form-group">
-                        <label> {{ __('admin.photo') }} </label>
-                        <div class="dropzone" id="mainphoto"></div>
+                        <label for="document">{{ trans('admin.project') }} / {{ trans('admin.photo') }}</label>
+                        <div class="needsclick dropzone" id="document-dropzone">
+                        </div>
                     </div>
 
                     <div class="text-right mb-5">

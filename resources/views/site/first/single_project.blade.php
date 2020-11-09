@@ -14,15 +14,24 @@
                         <div class="main-banner">
                             <div class="slideshow-container">
 
-                                <div class="mySlides fade">
-                                    <a href="#">
-                                        <img src="{{ $project->project_image }}" style="width: 635px;height: 357px">
-                                    </a>
-                                    <!--        <div class="text">Caption Text</div>-->
-                                </div>
+                                @if (isset($project->image))
+                                    @php
+                                        $imageName = explode('|', $project->image);
+                                    @endphp
+                                    @for($i = 0; $i < count($imageName);$i++)
+                                        @if($imageName[$i] != '')
+                                            <div class="mySlides fade">
+                                                <a href="#">
+                                                    <img src="{{ url('storage/projects/' . $imageName[$i]) }}" style="width: 635px;height: 357px">
+                                                </a>
+                                                <!--        <div class="text">Caption Text</div>-->
+                                            </div>
+                                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                                        @endif
+                                    @endfor
+                                @endif
 
-                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
 
                             </div>

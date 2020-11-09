@@ -168,25 +168,18 @@
                                                 $title = session('lang') . '_title';
                                                 $meta_tag = session('lang') . '_meta_tag';
                                             @endphp
-                                            @foreach($services as $index => $service)
+                                            @foreach($subCategories as $index => $service)
 
                                                 <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}">
                                                     {{ $service->$title }} <i class="fa fa-chevron-circle-right"></i>
                                                 </a>
-                                                @for($i = 0;$i < count($subCategory); $i++)
-                                                    @foreach($subCategory[$i] as $index => $sub)
-                                                        @if($index == $service->id)
-                                                            @php
-                                                                $allValue = explode('-', $sub);
-                                                                $id = $allValue[1];
-                                                                $name = $allValue[0];
-                                                            @endphp
-                                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" title="{{ $name }}" class="ml-4">
-                                                                {{ $name }}
-                                                            </a>
-                                                        @endif
-                                                    @endforeach
-                                                @endfor
+                                            @if ($service->childs->count() > 0)
+                                                @foreach($service->childs as $child)
+                                                <a href="{{ route('service.show', ['id' => $child->id, 'title' => $child->$title]) }}" title="{{ $child->$title }}" class="ml-4">
+                                                    {{ $child->$title }}
+                                                </a>
+                                                @endforeach
+                                            @endif
                                             @endforeach
                                         </div>
                                     </div>
@@ -298,20 +291,27 @@
                                 <a href="{{ route('service.show', ['id' => $service->id, 'title' => $service->$title]) }}" title="{{ $service->$meta_tag }}">
                                     {{ $service->$title }} <i class="fa fa-chevron-circle-right"></i>
                                 </a>
-                                @for($i = 0;$i < count($subCategory); $i++)
-                                    @foreach($subCategory[$i] as $index => $sub)
-                                        @if($index == $service->id)
-                                            @php
-                                                $allValue = explode('-', $sub);
-                                                $id = $allValue[1];
-                                                $name = $allValue[0];
-                                            @endphp
-                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" class="ml-4" title="{{ $name }}">
-                                                {{ $name }}
-                                            </a>
-                                        @endif
+                                @if ($service->childs->count() > 0)
+                                    @foreach($service->childs as $child)
+                                        <a href="{{ route('service.show', ['id' => $child->id, 'title' => $child->$title]) }}" title="{{ $child->$title }}" class="ml-4">
+                                            {{ $child->$title }}
+                                        </a>
                                     @endforeach
-                                @endfor
+                                @endif
+{{--                                @for($i = 0;$i < count($subCategory); $i++)--}}
+{{--                                    @foreach($subCategory[$i] as $index => $sub)--}}
+{{--                                        @if($index == $service->id)--}}
+{{--                                            @php--}}
+{{--                                                $allValue = explode('-', $sub);--}}
+{{--                                                $id = $allValue[1];--}}
+{{--                                                $name = $allValue[0];--}}
+{{--                                            @endphp--}}
+{{--                                            <a href="{{ route('service.show', ['id' => $id, 'title' => $name]) }}" class="ml-4" title="{{ $name }}">--}}
+{{--                                                {{ $name }}--}}
+{{--                                            </a>--}}
+{{--                                        @endif--}}
+{{--                                    @endforeach--}}
+{{--                                @endfor--}}
                             @endforeach
                         </div>
                     </div>

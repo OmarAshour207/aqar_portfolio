@@ -43,8 +43,10 @@
                                 <div class="project-thumb hover-element hover--active">
                                     <a href="javascript:void(0)">
                                         <div class="hover-element__initial">
-                                            <iframe class="homee" id="player" type="text/html" width="640" height="390"
-                                                    src="https://www.youtube.com/embed/{{ getYoutubeId($about->video) }}"></iframe>
+                                            <iframe width="560" height="390" src="https://www.youtube.com/embed/dQLsHooUPn4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{--                                            <iframe class="homee" id="player" type="text/html" width="640" height="390"--}}
+{{--                                                    src="https://www.youtube.com/embed/{{ getYoutubeId($about->video) }}">--}}
+{{--                                            </iframe>--}}
                                         </div>
                                     </a>
                                 </div>
@@ -164,7 +166,10 @@
                                 <a href="{{ route('project.show', ['id' => $project->id, 'title' => $project->$title]) }}">
                                     <div class="hover-element__initial">
                                         <div class="background-image-holder">
-                                            <img src="{{ $project->project_image }}" data-lazy="{{ $project->project_image }}" alt="{{ $project->meta_tag }}" />
+                                            @php
+                                                $img = explode('|', $project->image)[0] ?? '';
+                                            @endphp
+                                            <img src="{{  url('storage/projects/' . $img) }}" data-lazy="{{  url('storage/projects/' . $img) }}" alt="{{ $project->meta_tag }}" />
                                         </div>
                                     </div>
                                     <div class="hover-element__reveal" data-overlay="9">
@@ -236,9 +241,10 @@
                                     @if ($testimonial->status == 1)
                                         <img src="{{ $testimonial->testimonial_image }}" alt="{{ $testimonial->$meta_tag }}" style="height: 355px;border-radius: 14px;">
                                     @else
-                                        <iframe width="420" height="315"
-                                                src="https://www.youtube.com/embed/{{ getYoutubeId($testimonial->video) }}" allowfullscreen>
-                                        </iframe>
+{{--                                        <iframe width="420" height="315"--}}
+{{--                                                src="https://www.youtube.com/embed/{{ getYoutubeId($testimonial->video) }}" allowfullscreen>--}}
+{{--                                        </iframe>--}}
+                                        <iframe width="560" height="390" src="https://www.youtube.com/embed/dQLsHooUPn4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     @endif
                                 </div>
                                 <div class="blog-content">

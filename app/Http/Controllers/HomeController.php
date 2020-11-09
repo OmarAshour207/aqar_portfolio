@@ -31,19 +31,23 @@ class HomeController extends Controller
 
     public function getServices()
     {
-        $subServices = Service::where('parent_id', '!=', null)->get();
-        $parentServices = Service::where('parent_id', null)->get();
-        $subCategory = [];
-        foreach ($parentServices as $parent) {
-            foreach ($subServices as $index => $sub) {
-                if ($parent->id == $sub->parent_id) {
-                    array_push($subCategory, [
-                        $parent->id   => $sub->en_title . '-' .$sub->id
-                    ]);
-                }
-            }
-        }
-        return $subCategory;
+        $subCategories = Service::with('childs')
+            ->where('parent_id', '=', null)
+            ->get();
+//        dd($subCategories);
+//        $subServices = Service::where('parent_id', '!=', null)->get();
+//        $parentServices = Service::where('parent_id', null)->get();
+//        $subCategories = [];
+//        foreach ($parentServices as $parent) {
+//            foreach ($subServices as $index => $sub) {
+//                if ($parent->id == $sub->parent_id) {
+//                    array_push($subCategories, [
+//                        $parent->id   => $sub->en_title . '-' .$sub->id
+//                    ]);
+//                }
+//            }
+//        }
+        return $subCategories;
     }
 
     public function HomePage()
@@ -61,7 +65,7 @@ class HomeController extends Controller
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
 
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
 
         $teamMembers = TeamMember::orderBy('id', 'desc')->limit(4)->get();
         $testimonials = Testimonial::orderBy('id', 'desc')->limit(12)->get();
@@ -75,7 +79,7 @@ class HomeController extends Controller
                             'aboutUs', 'contactUs', 'projects',
                             'services', 'teamMembers',
                             'testimonials', 'blogs',
-                            'abouts', 'subCategory' ,
+                            'abouts', 'subCategories' ,
                             'header_services', 'clients',
                             'owner', 'websiteSettings'));
     }
@@ -119,7 +123,7 @@ class HomeController extends Controller
         $projects = Project::orderBy('id', 'desc')->limit(6)->get();
 
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
 
         $teamCount = TeamMember::all()->count();
         $clientCount = User::all()->count();
@@ -132,7 +136,7 @@ class HomeController extends Controller
         return view('site.' . $name . '.about',
             compact('abouts', 'projects',
                             'aboutUs', 'services',
-                            'subCategory', 'teamCount',
+                            'subCategories', 'teamCount',
                             'clientCount', 'projectCount',
                             'blogCount', 'pageName',
                             'owner'));
@@ -145,12 +149,12 @@ class HomeController extends Controller
 
         $abouts = About::limit(6)->get();
         $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
         $pageName = __('home.blogs');
 
         return view('site.' . getThemeName() . '.blogs',
                 compact('blogs', 'services',
-                                'subCategory', 'abouts',
+                                'subCategories', 'abouts',
                                 'pageName'));
     }
 
@@ -160,13 +164,13 @@ class HomeController extends Controller
         $blogs = Blog::orderBy('id', 'desc')->limit(4)->get();
         $abouts = About::limit(6)->get();
         $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
         $pageName = __('home.blog_details');
 
         return view('site.' . getThemeName() . '.single_blog',
                 compact('blog', 'services',
                                 'blogs','abouts',
-                                'subCategory', 'pageName'));
+                                'subCategories', 'pageName'));
     }
 
     public function projectsPage()
@@ -176,12 +180,12 @@ class HomeController extends Controller
         $aboutUs = About::first();
         $abouts = About::limit(6)->get();
         $services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
         $pageName = __('home.our_projects');
 
         return view('site.' . getThemeName() . '.projects',
                 compact('projects', 'aboutUs',
-                                'services', 'subCategory',
+                                'services', 'subCategories',
                                 'abouts', 'pageName'));
     }
 
@@ -196,12 +200,12 @@ class HomeController extends Controller
 
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
         $pageName = __('home.our_services');
 
         return view('site.' . $name . '.services',
                 compact('services', 'header_services',
-                                'abouts', 'subCategory',
+                                'abouts', 'subCategories',
                                 'pageName'));
     }
 
@@ -211,13 +215,13 @@ class HomeController extends Controller
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
         $pageName = __('home.service_details');
 
         return view('site.' . getThemeName() . '.single_service',
                 compact('service', 'services',
                                 'header_services', 'abouts',
-                                'subCategory', 'pageName'));
+                                'subCategories', 'pageName'));
     }
 
     public function singleProject($id, $title)
@@ -226,14 +230,14 @@ class HomeController extends Controller
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
 
         $pageName = __('home.project_details') . ' ' . $title;
 
         return view('site.' . getThemeName() . '.single_project',
             compact('project', 'services',
                 'header_services', 'abouts',
-                'subCategory', 'pageName'));
+                'subCategories', 'pageName'));
     }
 
     public function contact()
@@ -244,13 +248,13 @@ class HomeController extends Controller
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
         $pageName = __('home.contact_us');
 
         return view('site.' . getThemeName() . '.contact',
                 compact('contactUs', 'services',
                                 'aboutUs', 'abouts',
-                                'header_services', 'subCategory',
+                                'header_services', 'subCategories',
                                 'pageName'));
     }
 
@@ -259,14 +263,14 @@ class HomeController extends Controller
         $services = Service::orderBy('id', 'desc')->limit(6)->get();
         $abouts = About::limit(6)->get();
         $header_services = Service::where('parent_id', null)->orderBy('id', 'desc')->limit(6)->get();
-        $subCategory = $this->getServices();
+        $subCategories = $this->getServices();
         $data = Data::where('user_id', auth()->user()->id)->first();
         $pageName = __('admin.profile');
 
 
         return view('site.first.profile',
                 compact('services', 'abouts',
-                                'header_services', 'subCategory',
+                                'header_services', 'subCategories',
                                 'data', 'pageName'));
     }
 

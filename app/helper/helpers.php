@@ -32,19 +32,19 @@ function getThemeName()
 
 function getServices()
 {
-    $subServices = Service::where('parent_id', '!=', null)->get();
-    $parentServices = Service::where('parent_id', null)->get();
-    $subCategory = [];
-    foreach ($parentServices as $parent) {
-        foreach ($subServices as $index => $sub) {
-            if ($parent->id == $sub->parent_id) {
-                array_push($subCategory, [
-                    $parent->id   => $sub->en_title . '-' .$sub->id
-                ]);
-            }
-        }
-    }
-    return $subCategory;
+    return Service::with('childs')->where('parent_id', '=', null)->get();
+//    $parentServices = Service::where('parent_id', null)->get();
+//    $subCategory = [];
+//    foreach ($parentServices as $parent) {
+//        foreach ($subServices as $index => $sub) {
+//            if ($parent->id == $sub->parent_id) {
+//                array_push($subCategory, [
+//                    $parent->id   => $sub->en_title . '-' .$sub->id
+//                ]);
+//            }
+//        }
+//    }
+//    return $subCategory;
 }
 
 function getYoutubeId($url)

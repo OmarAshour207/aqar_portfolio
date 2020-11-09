@@ -15,7 +15,6 @@ class ProjectController extends Controller
         $this->middleware('auth');
     }
 
-
     public function index()
     {
         $projects = Project::paginate(10);
@@ -37,7 +36,11 @@ class ProjectController extends Controller
             'ar_meta_tag'           => 'required|string',
             'en_meta_tag'           => 'required|string',
         ]);
-        $data['image'] = $request->image;
+        $images = '';
+        foreach ($request->input('document', []) as $file) {
+            $images .= $file . '|';
+        }
+        $data['image'] = $images;
 
         Project::create($data);
         session()->flash('success', __('admin.added_successfully'));
@@ -59,7 +62,13 @@ class ProjectController extends Controller
             'ar_meta_tag'           => 'required|string',
             'en_meta_tag'           => 'required|string',
         ]);
-        $data['image'] = $request->image;
+
+        $images = '';
+
+        foreach ($request->input('document', []) as $file) {
+            $images .= $file . '|';
+        }
+        $data['image'] = $images;
 
         $project->update($data);
         session()->flash('success', __('admin.updated_successfully'));
@@ -69,10 +78,42 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         if($project->image != null) {
-            Storage::disk('local')->delete('public/projects/' . $project->image);
+            $imagesName = explode('|', $project->image);
+            for ($i = 0;$i < count($imagesName); $i++) {
+                if ($imagesName[$i] != '') {
+                    Storage::disk('local')->delete('public/projects/' . $imagesName[$i]);
+                }
+            }
         }
         $project->delete();
         session()->flash('success', __('admin.deleted_successfully'));
         return redirect()->route('projects.index');
+    }
+
+    public function uploadProjectImages(Request $request)
+    {
+        $imageName = Image::make($request->file)
+            ->resize($request->width, $request->height)
+            ->encode('jpg');
+        Storage::disk('local')->put('public/projects/'.$request->file->hashName(), (string) $imageName, 'public');
+        return response()->json([
+            'name'          => $request->file->hashName(),
+            'original_name' => $request->file->getClientOriginalName()
+        ]);
+    }
+
+    public function removeProjectImage(Request $request)
+    {
+        $data = Project::findOrFail($request->data_id);
+        $imagesName = explode('|', $data->image);
+        $newImagesName = '';
+        for ($i = 0;$i < count($imagesName); $i++) {
+            if ($imagesName[$i] != $request->id && $imagesName[$i] != '') {
+                $newImagesName .= $imagesName[$i] . '|';
+            }
+        }
+        $data->update(['image' => $newImagesName]);
+        Storage::disk('local')->delete('public/projects/' . $request->id);
+        return "Removed";
     }
 }

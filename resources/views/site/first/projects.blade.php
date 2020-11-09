@@ -21,7 +21,10 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="blog-block flex-column">
                             <div class="blog-img w-100">
-                                <img src="{{ $project->project_image }}" class="img-fluid" alt="{{ $project->$meta_tag }}">
+                                @php
+                                    $img = explode('|', $project->image)[0] ?? '';
+                                @endphp
+                                <img src="{{ url('storage/projects/' . $img)}}" class="img-fluid" alt="{{ $project->$meta_tag }}">
                             </div>
                             <div class="blog-content">
                                 <h4>
